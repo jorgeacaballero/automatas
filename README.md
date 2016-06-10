@@ -38,27 +38,27 @@ La siguiente NFA acepta el lenguaje `a* + (ab)*`
 
 2. Definir los parametros de cada tupla:
 
-```
-nfa.states = ['A', 'B', 'C', 'D']
-nfa.alphabet = ['a', 'b']
-nfa.start = 'A'
-nfa.accept = ['A', 'B', 'D']
-nfa.transitions = {"A"=>{"a"=>["B", "C"]}, "B"=>{"a"=>"B"}, "C"=>{"b"=>"D"}, "D"=>{"a"=>"C"}}
-```
+    ```
+    nfa.states = ['A', 'B', 'C', 'D']
+    nfa.alphabet = ['a', 'b']
+    nfa.start = 'A'
+    nfa.accept = ['A', 'B', 'D']
+    nfa.transitions = {"A"=>{"a"=>["B", "C"]}, "B"=>{"a"=>"B"}, "C"=>{"b"=>"D"}, "D"=>{"a"=>"C"}}
+    ```
 
 3. Para probar la maquina, usamos la funcion booleana `accepts?` de la siguiente manera:
 
-```
-nfa.accepts? 'a'
- => true
-nfa.accepts? 'ab'
- => true
-nfa.accepts? 'aba'
- => false
-nfa.accepts? 'abaababababa'
- => false
-nfa.accepts? 'ababab'
- => true
-nfa.accepts? 'abababababab'
- => true
-```
+    ```
+    nfa.accepts? 'a'
+     => true
+    nfa.accepts? 'ab'
+     => true
+    nfa.accepts? 'aba'
+     => false
+    nfa.accepts? 'abaababababa'
+     => false
+    nfa.accepts? 'ababab'
+     => true
+    nfa.accepts? 'abababababab'
+     => true
+    ```
