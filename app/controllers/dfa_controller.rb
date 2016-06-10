@@ -1,0 +1,2 @@
+class DfaController < ApplicationController
+end

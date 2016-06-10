@@ -1,0 +1,2 @@
+class TmController < ApplicationController
+end

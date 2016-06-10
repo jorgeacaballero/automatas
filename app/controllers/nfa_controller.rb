@@ -1,0 +1,2 @@
+class NfaController < ApplicationController
+end
