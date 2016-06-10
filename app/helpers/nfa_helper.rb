@@ -24,7 +24,10 @@ module NfaHelper
 		        heads = newHeads
 		        break if heads.empty?
 		      end
-
+		      
+		      		      
+		      accept = false
+		      heads.each { |head| accept = true if accept_state? head }
 
 		      resp = {
 		        input: input,
