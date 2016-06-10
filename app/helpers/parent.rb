@@ -20,5 +20,4 @@ module Parent
 			return obj
 		end
 	end
-
 end
