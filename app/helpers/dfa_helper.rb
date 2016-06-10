@@ -1,5 +1,5 @@
 module DfaHelper
-	class dfa < Parent::Parent
+	class DFA < Parent::Parent
 		def check?
 			@transitions.each do |key, val|
 				@alphabet.each do |a| 
