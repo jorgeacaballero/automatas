@@ -26,6 +26,9 @@ module NfaHelper
 		      end
 
 
+		      accept = false
+		      heads.each { |head| accept = true if accept_state? head }
+
 		      resp = {
 		        input: input,
 		        accept: accept,
@@ -34,5 +37,34 @@ module NfaHelper
 	    end
 
 
+	    def accepts?(input)
+	      resp = consume(input)
+	      resp[:accept]
+    	end
+
+    	def transition(state, symbol)
+	      dests = @transitions[state][symbol]
+	      dests = [dests] unless dests.kind_of? Array
+	      dests
+	    end
+	    
+	    # Determines whether or not any transition states exist
+	    # given a beginning state and input symbol pair.
+	    #
+	    # @param (see #transition)
+	    # @return [Boolean] Whether or not a transition exists.
+	    def has_transition?(state, symbol)
+	      return false unless @transitions.include? state
+	      @transitions[state].has_key? symbol
+	    end
+	    
+	    # Determines if a given state is an accept state.
+	    #
+	    # @param [String] state the state label to check.
+	    # @return [Boolean] whether or not the state is an accept state.
+	    def accept_state?(state)
+	      @accept.include? state
+	    end
+	    	
 	end
 end
