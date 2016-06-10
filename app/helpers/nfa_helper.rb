@@ -1,5 +1,5 @@
 module NfaHelper
-	class Nfa < Parent::Parent
+	class NFA < Parent::Parent
 		def consume(input)
 			heads = [@start]
 
