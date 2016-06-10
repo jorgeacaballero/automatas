@@ -21,8 +21,14 @@ module DfaHelper
 			resp
 		end
 
+		def accepts?(input)
+      		resp = feed(input)
+      		resp[:accept]
+    	end
 
-
-
+    	def is_accept_state?(state)
+      		@accept.include? state.to_s
+    	end
+    	
 	end #fin class
 end #fin module
