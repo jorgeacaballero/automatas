@@ -1,5 +1,7 @@
 module TmHelper
 	class TM < Parent::Parent
+		attr_accessor :inputAlphabet, :tapeAlphabet, :tape, :reject
+
 		def initialize(elements={})
 			yaml = {}
 			yaml = YAML::load_file(elements[:file]) if elements.has_key? :file
@@ -10,6 +12,7 @@ module TmHelper
 			@accept = false
 			@reject = false
 		end
+
 	end
 
 	class TMTape
