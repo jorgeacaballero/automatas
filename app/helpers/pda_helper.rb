@@ -1,6 +1,6 @@
 module PdaHelper
 
-	class PDA < Nfa::NfaHelper
+	class PDA < NfaHelper::NFA
 
 		def initialize(params={})
 			super(params)
