@@ -18,12 +18,12 @@ module TmHelper
 	class TMTape
 		attr_accessor :storage
 
-		def initialize(input=nil)
-			if input
+		def initialize(elements=nil)
+			if elements
 				@storage = []
-				@storage << '@' unless input[0] == '@'
-				@storgae += input.split('')
-				@storage << '@' unless input[-1] == '@'
+				@storage << '@' unless elements[0] == '@'
+				@storgae += elements.split('')
+				@storage << '@' unless elements[-1] == '@'
 				@head = 1
 			end
 		end
