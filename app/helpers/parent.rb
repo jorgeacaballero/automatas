@@ -12,4 +12,13 @@ module Parent
 			@transitions = Hash.keys_to_strings(@transitions)
 		end
 	end
+
+	class Hash
+		def self.keys_to_strings(obj)
+			return obj unless obj.kind_of? Hash
+			obj = obj.inject({}){|h,(k,v)| h[k.to_s] = Hash.keys_to_strings(v); h}
+			return obj
+		end
+	end
+
 end
