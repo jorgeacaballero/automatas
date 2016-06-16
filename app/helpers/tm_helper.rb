@@ -12,7 +12,6 @@ module TmHelper
 			@accept = false
 			@reject = false
 		end
-
 	end
 
 	class TMTape

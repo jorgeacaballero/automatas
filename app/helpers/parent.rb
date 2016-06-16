@@ -1,23 +1,23 @@
 module Parent
 	class Parent
 		attr_accessor :states, :alphabet, :start, :accept, :transitions
-		def initialize(params={})
+		def initialize(elements={})
 			yaml = {}
-			yaml = YAML::load_file(params[:file]) if params.has_key? :file
-			@states = yaml['states'] || params[:states]
-			@alphabet = yaml['alphabet'] || params[:alphabet]
-			@start = yaml['start'] || params[:start]
-			@accept = yaml['accept'] || params[:accept]
-			@transitions = yaml['transitions'] || params[:transitions]
+			yaml = YAML::load_file(elements[:file]) if elements.has_key? :file
+			@states = yaml['states'] || elements[:states]
+			@alphabet = yaml['alphabet'] || elements[:alphabet]
+			@start = yaml['start'] || elements[:start]
+			@accept = yaml['accept'] || elements[:accept]
+			@transitions = yaml['transitions'] || elements[:transitions]
 			@transitions = Hash.keys_to_strings(@transitions)
 		end
 	end
 
 	class Hash
-		def self.keys_to_strings(obj)
-			return obj unless obj.kind_of? Hash
-			obj = obj.inject({}){|h,(k,v)| h[k.to_s] = Hash.keys_to_strings(v); h}
-			return obj
+		def self.keys_to_strings(element)
+			return element unless element.kind_of? Hash
+			element = element.inject({}){|h,(k,v)| h[k.to_s] = Hash.keys_to_strings(v); h}
+			return element
 		end
 	end
 end

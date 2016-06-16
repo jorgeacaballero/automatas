@@ -51,33 +51,30 @@ module PdaHelper
 		end
 
 		def pop?(symbol)
-		  @stack.last == symbol
+			@stack.last == symbol
 		end
 
 
 		def has_transition?(state, symbol)
-		  return false unless @transitions.has_key? state
-		  if @transitions[state].has_key? symbol
-			actions = @transitions[state][symbol]
-			return false if actions['pop'] && @stack.last != actions['pop']
-			return true
-		  else
-			return false
-		  end
+			return false unless @transitions.has_key? state
+			if @transitions[state].has_key? symbol
+				actions = @transitions[state][symbol]
+				return false if actions['pop'] && @stack.last != actions['pop']
+				return true
+			else
+				return false
+			end
 		end
 
 
 		def accept_state?(state)
-		  @accept.include? state
+			@accept.include? state
 		end
 
 		def includes_accept_state?(states)
-		  states.each { |s| return true if accept_state? s }
-		  return false
+			states.each { |s| return true if accept_state? s }
+			return false
 		end
-
-		
-
 
 
 		def consume(input)
@@ -88,21 +85,14 @@ module PdaHelper
 
 			input.each_char do |symbol|
 				newHeads = []
-
-
 				heads.each do |head|
-
 					if has_transition?(head, symbol)
-
 						transition(head, symbol).each { |t| newHeads << t }
 					end
-
 				end
-
 				heads = newHeads
 				break if heads.empty?
 			end
-
 			accept = includes_accept_state? heads
 			resp = {
 				input: input,
@@ -111,7 +101,5 @@ module PdaHelper
 				stack: stack
 			}
 		end
-
 	end
-
 end
