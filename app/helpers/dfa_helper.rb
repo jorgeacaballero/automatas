@@ -6,7 +6,15 @@ module DfaHelper
 					return false unless @transitions[key].has_key? a.to_s
 				end
 			end
-		return true
+            resp = {
+                check: true,
+                states: @states,
+                alphabet: @alphabet,
+                start: @start,
+                accept_state: @accept,
+                transitions: @transitions
+            }
+            resp
 		end
 
 		def consume(input)
