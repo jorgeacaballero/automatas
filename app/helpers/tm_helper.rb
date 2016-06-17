@@ -12,6 +12,56 @@ module TmHelper
 			@accept = false
 			@reject = false
 		end
+
+		def feed(input) 
+			@tape = Tape.new(input)
+			@accept = false
+			@reject = false
+
+			stateHead = @start.to_s
+			input.each_char do |symbol|
+				oState = transition(stateHead, symbol)
+				if @accept || @reject
+					break
+				else
+					stateHead = toState
+				end
+			end
+		      
+			resp = {
+				input: input,
+				accept: @accept,
+				reject: @reject,
+				head: stateHead,
+				tape: @tape.memory,
+				output: @tape.output
+			}
+			resp
+		end
+
+		def accepts?(input)
+			resp = feed(input)
+			resp[:accept]
+		end
+
+		def rejects?(input)
+			resp = feed(input)
+			resp[:reject]
+		end
+
+		def transition(state, symbol)
+			actions = @transitions[state][symbol]
+			@tape.transition(symbol, actions['write'], actions['move'])
+
+			@accept = true if actions['to'] == 'ACCEPT'
+			@reject = true if actions['to'] == 'REJECT'
+			@head = actions['to']
+		end
+
+		def has_transition?(state, read)
+			return false unless @transitions.include? state
+			@transitions[state].has_key? read
+		end
 	end
 
 	class TMTape
