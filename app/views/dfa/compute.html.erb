@@ -1,4 +1,37 @@
-<%= @dfa.check? %>
+
+
+<table class='striped'>
+    <thead>
+        <tr>
+            <th data-field="id">Símbolo</th>
+            <th data-field="name">Contenido</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Q</td>
+            <td><% @dfa.states.each do |state| %><%= state%> <% end %></td>
+        </tr>
+        <tr>
+            <td>Σ</td>
+            <td> <% @dfa.alphabet.each do |alphabet| %><%= alphabet%> <% end %> </td>
+        </tr>
+        <tr>
+            <td>δ</td>
+            <td> <%= @dfa.transitions %> </td>
+        </tr>
+        <tr>
+            <td>Q0</td>
+            <td> <%= @dfa.start %> </td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td> <% @dfa.accept.each do |accept| %><%= accept%> <% end %>  </td>
+        </tr>
+    </tbody>
+</table>
+
 
 
 <div class="row">
