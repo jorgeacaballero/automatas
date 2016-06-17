@@ -19,15 +19,17 @@ module DfaHelper
 
 		def consume(input)
 			head = @start.to_s
+            movements = []
 			input.each_char { 
                 |symbol| head = @transitions[head][symbol]
+                movements.push(head)
             }
 			accept = is_accept_state? head
 			resp = {
 				input: input,
 				accept: accept,
 				head: head,
-                movements: ['q1', 'q2', 'q1'],
+                movements: movements,
                 states: @states,
                 alphabet: @alphabet,
                 start: @start,
