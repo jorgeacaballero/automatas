@@ -1,0 +1,27 @@
+<div class="row">
+    <%= form_tag(controller: "dfa", action: "compute", method: "post") do %>
+        <div class="input-field col s6">
+            <%= label_tag(:states, "States:") %>
+            <%= text_field_tag(:states) %>
+        </div>
+        <div class="input-field col s6">
+            <%= label_tag(:alphabet, "Alphabet:") %>
+            <%= text_field_tag(:alphabet) %>
+        </div>
+        <div class="input-field col s6">
+            <%= label_tag(:start, "Start:") %>
+            <%= text_field_tag(:start) %>
+        </div>
+        <div class="input-field col s6">
+            <%= label_tag(:accept, "Accept:") %>
+            <%= text_field_tag(:accept) %>
+        </div>
+        <div class="input-field col s6">
+            <%= label_tag(:transitions, "Transitions:") %>
+            <%= text_field_tag(:transitions) %>
+        </div>
+        <div class="input-field col s12">
+            <%= submit_tag("Compute") %>
+        </div>
+    <% end %>
+</div>
