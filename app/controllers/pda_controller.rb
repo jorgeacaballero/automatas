@@ -2,7 +2,7 @@ require 'json'
 class PdaController < ApplicationController
 
 	def index
-        @pda = PdaHelper::DFA.new 
+        @pda = PdaHelper::PDA.new 
     end
 
     def compute
@@ -14,7 +14,7 @@ class PdaController < ApplicationController
         # '@' to represent delta
         # '&' to represent ε-transitions
 
-        @pda = DfaHelper::DFA.new()     
+        @pda = PdaHelper::PDA.new   
         @pda.states = hash['states'].split(',') # ["S", "A", "B", "ha"]
         @pda.alphabet = hash['alphabet'].split(/\s*,\s*/) # ["(", ")", "&"]
         @pda.start = hash['start'] # "S"
@@ -29,7 +29,7 @@ class PdaController < ApplicationController
         hash = pda_params
         hash = JSON.parse(hash) if hash.is_a?(String)
         
-        @pda = DfaHelper::DFA.new()
+        @pda = PdaHelper::PDA.new 
         @pda.states = hash['states'].split(' ')
         @pda.alphabet = hash['alphabet'].split(' ')
         @pda.start = hash['start']
