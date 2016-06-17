@@ -9,7 +9,7 @@ class PdaController < ApplicationController
         hash = pda_params
         hash = JSON.parse(hash) if hash.is_a?(String)
 
-        # Accepts balanced parentheses only.
+        # Accepts balanced parentheses only. (((()))) Accept  ((()) Reject
         #
         # '@' to represent delta
         # '&' to represent ε-transitions
