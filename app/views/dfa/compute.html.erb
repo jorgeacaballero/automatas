@@ -37,7 +37,7 @@
 <div class="row">
     <%= form_tag(controller: "dfa", action: "consume", method: "post") do %>
         <div class="input-field col s6">
-            <%= label_tag(:input_string, "Transitions:") %>
+            <%= label_tag(:input_string, "Input:") %>
             <%= text_field_tag(:input_string) %>
         </div>
         <%= hidden_field_tag 'states', @dfa.states %>

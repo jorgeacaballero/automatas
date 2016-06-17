@@ -1,0 +1,17 @@
+<%= @compute %>
+
+<div class="row">
+    <%= form_tag(controller: "dfa", action: "consume", method: "post") do %>
+        <div class="input-field col s6">
+            <%= label_tag(:input_string, "Input:") %>
+            <%= text_field_tag(:input_string) %>
+        </div>
+        <%= hidden_field_tag 'states', @dfa.states %>
+        <%= hidden_field_tag 'alphabet', @dfa.alphabet %>
+        <%= hidden_field_tag 'start', @dfa.start %>
+        <%= hidden_field_tag 'accept', @dfa.accept %>
+        <div class="input-field col s12">
+            <%= submit_tag("Consume") %>
+        </div>
+    <% end %>
+</div>
