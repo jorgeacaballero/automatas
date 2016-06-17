@@ -19,7 +19,7 @@ module DfaHelper
 
 		def consume(input)
 			head = @start.to_s
-            movements = []
+            movements = [@start.to_s]
 			input.each_char { 
                 |symbol| head = @transitions[head][symbol]
                 movements.push(head)

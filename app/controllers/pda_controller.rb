@@ -14,7 +14,7 @@ class PdaController < ApplicationController
         # '@' to represent delta
         # '&' to represent ε-transitions
 
-        @pda = PdaHelper::PDA.new   
+        @pda = PdaHelper::PDA.new
         @pda.states = hash['states'].split(',') # ["S", "A", "B", "ha"]
         @pda.alphabet = hash['alphabet'].split(/\s*,\s*/) # ["(", ")", "&"]
         @pda.start = hash['start'] # "S"

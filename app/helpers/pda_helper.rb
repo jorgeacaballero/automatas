@@ -78,7 +78,7 @@ module PdaHelper
 
 
 		def consume(input)
-			movements = []
+			movements = [[@start.to_s]]
 			heads, @stack, accept = [@start], [], false
 
 			eTrans = transition(@start, '&') if has_transition?(@start, '&')
@@ -92,7 +92,7 @@ module PdaHelper
 					end
 				end
 				heads = newHeads
-				movements.push(head)
+				movements.push(heads)
 				break if heads.empty?
 			end
 			accept = includes_accept_state? heads
@@ -100,7 +100,7 @@ module PdaHelper
 				input: input,
 				accept: accept,
 				heads: heads,
-				stack: stack,
+				stack: @stack,
 				movements: movements,
                 states: @states,
                 alphabet: @alphabet,
