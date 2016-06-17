@@ -19,7 +19,29 @@
         </tr>
         <tr>
             <td>δ</td>
-            <td> <%= @dfa.transitions %> </td>
+            <td> 
+                <table> <!--Comienza la tabla anidada de transiciones -->
+                    <thead>
+                        <tr>
+                            <th data-field="id">Estado</th>
+                            <th data-field="name">Movimientos</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @dfa.transitions.each do |trans_key, trans_val| %>
+                        <tr>
+                            <td><%= trans_key %></td>
+                            <td>
+                                <% trans_val.each do |key, value|%>
+                                    <%= key %> -> <%= value %> <br>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </td> <!--Aqui termina la row de transiciones -->
         </tr>
         <tr>
             <td>Q<sub>0</sub></td>
