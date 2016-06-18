@@ -10,7 +10,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <%= text_field_tag(:states)%>
+                            <%= text_field_tag(:states, nil, :required => true)%>
                             <label for="states">States</label>
                         </div>
                     </div>
@@ -29,11 +29,36 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="col s3"></div>
+                        <div class="col s3"></div>
+                        <div class="col s3"></div>
+                        <div class="col s3"></div>
+                    </div>
+                    <h5>Transitions</h5>
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input type="text" name="current_state" id="current_state">
+                            <label for="current_state">Current State</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <input type="text" name="symbol" id="symbol">
+                            <label for="symbol">Symbol</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="text" name="destination" id="destination">
+                            <label for="destination">Destination</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <i class="material-icons">playlist_add</i>
+                            <i class="material-icons">delete</i>
+                        </div>
+
+                       <!--  <div class="input-field col s12">
                             <%= text_field_tag(:transitions) %>
                             <label for="transitions">Transitions</label>
-                        </div>
+                        </div> -->
                     </div>
+                    
                     <div class="row">
                         <div class="center">
                             <div class="input-field col s12">
