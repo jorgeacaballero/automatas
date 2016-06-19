@@ -8,7 +8,7 @@ module TmHelper
 			super(elements)
 			@inputAlphabet = elements[:inputAlphabet] || yaml['inputAlphabet']
 			@tapeAlphabet = elements[:tapeAlphabet] || yaml['tapeAlphabet']
-			@tape = Tape.new
+			@tape = TMTape.new
 			@accept = false
 			@reject = false
 		end
