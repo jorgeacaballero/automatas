@@ -17,6 +17,10 @@
             <td> <% @pda.alphabet.each do |alphabet| %>  <%= alphabet%> <% end %> </td>
         </tr>
         <tr>
+            <td>Γ</td>
+            <td><% @pda.stack_user.each do |stack| %>  <%= stack%> <% end %></td>
+        </tr>
+        <tr>
             <td>δ</td>
             <td> 
                 <table> <!--Comienza la tabla anidada de transiciones -->

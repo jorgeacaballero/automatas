@@ -6,6 +6,7 @@ module PdaHelper
 			super(params)
 			@alphabet << '&' unless !@alphabet || @alphabet.include?('&')
 			@stack = []
+			@stack_user = params['stack_user']
 		end
 
 		def accepts?(input)

@@ -19,6 +19,7 @@ class PdaController < ApplicationController
         @pda.alphabet = hash['alphabet'].split(/\s*,\s*/) # ["(", ")", "&"]
         @pda.start = hash['start'] # "S"
         @pda.accept = hash['accept'].split(/\s*,\s*/) # "ha"
+        @pda.stack_user = hash['stack_user'].split(/\s*,\s*/)
         @pda.transitions = {"S"=>{"&"=>{"to"=>"A", "push"=>"@"}}, 
                             "A"=>{"("=>{"to"=>"A", "push"=>"x"}, ")"=>{"to"=>"B", "pop"=>"x"}}, 
                             "B"=>{"("=>{"to"=>"A", "push"=>"x"}, ")"=>{"to"=>"B", "pop"=>"x"}, 
@@ -44,6 +45,6 @@ class PdaController < ApplicationController
 
     private
         def pda_params
-          params.permit(:states, :alphabet, :start, :accept, :transitions, :input_string)
+          params.permit(:states, :alphabet, :start, :accept, :transitions, :input_string, :stack_user)
         end
 end
