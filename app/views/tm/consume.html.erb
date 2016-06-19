@@ -1,1 +1,162 @@
-consume.html.erb
+<div class="cy" id="cy"></div>
+
+<table class='striped'>
+    <thead>
+        <tr>
+            <th data-field="id">Símbolo</th>
+            <th data-field="name">Contenido</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Q</td>
+            <td><% @tm.states.each do |state| %><%= state%> <% end %></td>
+        </tr>
+        <tr>
+            <td>Σ</td>
+            <td> <% @tm.input_alphabet.each do |alphabet| %><%= alphabet%> <% end %> </td>
+        </tr>
+        <tr>
+            <td>Γ</td>
+            <td> <% @tm.tape_alphabet.each do |alphabet| %><%= alphabet%> <% end %> </td>
+        </tr>
+        <tr>
+            <td>δ</td>
+            <td> 
+                <table> <!--Comienza la tabla anidada de transiciones -->
+                    <thead>
+                        <tr>
+                            <th data-field="id">Estado</th>
+                            <th data-field="name">Movimientos</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @tm.transitions.each do |trans_key, trans_val| %>
+                        <tr>
+                            <td><%= trans_key %></td>
+                            <td>
+                                <% trans_val.each do |key, value|%>
+                                    <%= key %> -> <%= value %> <br>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </td> <!--Aqui termina la row de transiciones -->
+        </tr>
+        <tr>
+            <td>Q<sub>0</sub></td>
+            <td> <%= @tm.start %> </td>
+        </tr>
+        <tr>
+            <td>Q<sub>a</sub></td>
+            <td> <% @tm.accept.each do |accept| %><%= accept%> <% end %>  </td>
+        </tr>
+        <tr>
+            <td>Q<sub>r</sub></td>
+            <td> <% @tm.reject.each do |reject| %><%= reject%> <% end %>  </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <%= form_tag(controller: "tm", action: "consume", method: "post") do %>
+        <div class="input-field col s6">
+            <%= label_tag(:input_string, "Input:") %>
+            <%= text_field_tag(:input_string) %>
+        </div>
+        <%= hidden_field_tag 'states', @tm.states %>
+        <%= hidden_field_tag 'input_alphabet', @tm.input_alphabet %>
+        <%= hidden_field_tag 'tape_alphabet', @tm.tape_alphabet %>
+        <%= hidden_field_tag 'start', @tm.start %>
+        <%= hidden_field_tag 'accept', @tm.accept %>
+        <%= hidden_field_tag 'reject', @tm.reject %>
+
+        <div class="input-field col s12">
+            <%= submit_tag("Consume") %>
+        </div>
+    <% end %>
+</div>
+
+<script type="text/javascript">
+    var cy = cytoscape({
+      container: document.getElementById('cy'),
+
+      zoomingEnabled: true,
+      userZoomingEnabled: false,
+      panningEnabled: true,
+      userPanningEnabled: true,
+
+      boxSelectionEnabled: false,
+      autounselectify: true,
+
+      style: cytoscape.stylesheet()
+        .selector('node')
+          .css({
+            'content': 'data(id)'
+          })
+        .selector('edge')
+          .css({
+            'target-arrow-shape': 'triangle',
+            'width': 4,
+            'line-color': '#ddd',
+            'label': 'data(label)',
+            'target-arrow-color': '#ddd',
+            'curve-style': 'bezier'
+          })
+        .selector('.highlighted')
+          .css({
+            'background-color': '#5e35b1',
+            'line-color': '#5e35b1',
+            'target-arrow-color': '#5e35b1',
+            'transition-property': 'background-color, line-color, target-arrow-color',
+            'transition-duration': '0.5s'
+          }),
+      
+      elements: {
+          nodes: [
+            { data: { id: 'a' } },
+            { data: { id: 'b' } },
+            { data: { id: 'c' } },
+            { data: { id: 'd' } },
+            { data: { id: 'e' } }
+          ], 
+          
+          edges: [
+            { data: { id: 'a"e', weight: 1, source: 'a', target: 'e', label: '0' } },
+            { data: { id: 'ab', weight: 3, source: 'a', target: 'b' , label: '1' } },
+            { data: { id: 'be', weight: 4, source: 'b', target: 'e' , label: '0' } },
+            { data: { id: 'bc', weight: 5, source: 'b', target: 'c' , label: '0' } },
+            { data: { id: 'ce', weight: 6, source: 'c', target: 'e' , label: '1' } },
+            { data: { id: 'cd', weight: 2, source: 'c', target: 'd' , label: '0' } },
+            { data: { id: 'de', weight: 7, source: 'd', target: 'e' , label: '1' } }
+          ]
+        },
+      
+      layout: {
+        name: 'breadthfirst',
+        directed: true,
+        roots: '#a',
+        padding: 10
+      }
+    });
+      
+    var bfs = cy.elements().bfs('#a', function(){}, true);
+
+    var i = 0;
+    var highlightNextEle = function(){
+      if( i < bfs.path.length ){
+        bfs.path[i].addClass('highlighted');
+      
+        i++;
+        setTimeout(highlightNextEle, 1000);
+      }
+    };
+
+    // kick off first highlight
+    highlightNextEle();
+
+</script>
