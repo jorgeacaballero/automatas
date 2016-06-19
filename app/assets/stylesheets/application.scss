@@ -3,14 +3,18 @@ $primary-color: color("deep-purple", "darken-1") !default;
 @import 'materialize';
 
 #cy {
-  width: 100%;
-  height: 30em;
-  display: block;
+    width: 100%;
+    height: 30em;
+    display: block;
 }
 
 i {
     padding-top: 0.6em;
     color: #5e35b1;
+}
+
+nav .brand-logo {
+    padding-left: 1em;
 }
 
 h5 {

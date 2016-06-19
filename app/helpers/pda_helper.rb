@@ -1,7 +1,7 @@
 module PdaHelper
 
 	class PDA < NfaHelper::NFA
-
+		attr_accessor :stack_user
 		def initialize(params={})
 			super(params)
 			@alphabet << '&' unless !@alphabet || @alphabet.include?('&')
