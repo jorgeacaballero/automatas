@@ -52,3 +52,19 @@
         </tr>
     </tbody>
 </table>
+
+<div class="row">
+    <%= form_tag(controller: "pda", action: "consume", method: "post") do %>
+        <div class="input-field col s6">
+            <%= label_tag(:input_string, "Input:") %>
+            <%= text_field_tag(:input_string) %>
+        </div>
+        <%= hidden_field_tag 'states', @pda.states %>
+        <%= hidden_field_tag 'alphabet', @pda.alphabet %>
+        <%= hidden_field_tag 'start', @pda.start %>
+        <%= hidden_field_tag 'accept', @pda.accept %>
+        <div class="input-field col s12">
+            <%= submit_tag("Consume") %>
+        </div>
+    <% end %>
+</div>
