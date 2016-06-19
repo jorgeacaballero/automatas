@@ -1,1 +1,87 @@
-index.html.erb
+<div class="row">
+    <%= form_tag(controller: "tm", action: "compute", method: "post") do %>
+        </br>
+        </br>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card-panel white">
+                    <div class="row">
+                        <h3 class="center deep-purple-text text-darken-1">Create TM</h3>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <%= text_field_tag(:states, nil, :required => true)%>
+                            <label for="states">States</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m4">
+                            <%= text_field_tag(:input_alphabet) %>
+                            <label for="input_alphabet">Input Alphabet</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <%= text_field_tag(:tape_alphabet) %>
+                            <label for="tape_alphabet">Tape Alphabet</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <%= text_field_tag(:start) %>
+                            <label for="start">Initial State</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <%= text_field_tag(:accept) %>
+                            <label for="accept">Accept State</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <%= text_field_tag(:reject) %>
+                            <label for="reject">Reject State</label>
+                        </div>
+                    </div>
+                    <h5>Transitions</h5>
+                    <div id="transitions">
+                        <div id="transitionRow">
+                            <div class="row">
+                                <div class="input-field col s3">
+                                    <input type="text" name="current_state" id="current_state">
+                                    <label for="current_state">Current State</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input type="text" name="symbol" id="symbol">
+                                    <label for="symbol">Symbol</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="text" name="destination" id="destination">
+                                    <label for="destination">Destination</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <a href="#" onclick="addRow()"><i class="material-icons">add</i></a>
+                                    <a><i class="material-icons" style="color: red;">delete</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="center">
+                            <div class="input-field col s12">
+                                <%= submit_tag("Compute",:class => "btn deep-purple darken-1") %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<script type="text/javascript">
+
+    var transition_row = "";
+
+    function addRow(){
+        transition_row = $("#transitionRow").html();
+        $("#transitions").append(transition_row);
+    }
+
+    
+
+</script>
