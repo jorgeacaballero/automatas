@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Automatas</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -12,7 +13,13 @@
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/dfa">DFA</a></li>
+        <li><a href="/pda">PDA</a></li>
+        <li><a href="/tm">Turing Machine</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
         <li><a href="/dfa">DFA</a></li>
         <li><a href="/pda">PDA</a></li>
         <li><a href="/tm">Turing Machine</a></li>
