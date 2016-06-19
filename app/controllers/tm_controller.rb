@@ -1,13 +1,13 @@
 class TmController < ApplicationController
 	def index
-        @tm = tmHelper::TM.new 
+        @tm = TmHelper::TM.new 
     end
 
     def compute
         hash = tm_params
         hash = JSON.parse(hash) if hash.is_a?(String)
 
-        @tm = tmHelper::TM.new()     
+        @tm = TmHelper::TM.new()     
         @tm.states = hash['states'].split(',')
         @tm.alphabet = hash['alphabet'].split(/\s*,\s*/)
         @tm.start = hash['start']
@@ -21,7 +21,7 @@ class TmController < ApplicationController
         hash = tm_params
         hash = JSON.parse(hash) if hash.is_a?(String)
         
-        @tm = tmHelper::TM.new()
+        @tm = TmHelper::TM.new()
         @tm.states = hash['states'].split(' ')
         @tm.alphabet = hash['alphabet'].split(' ')
         @tm.start = hash['start']
