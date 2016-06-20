@@ -36,27 +36,16 @@
                             <label for="reject">Reject State</label>
                         </div>
                     </div>
-                    <h5>Transitions</h5>
-                    <div id="transitions">
-                        <div id="transitionRow">
-                            <div class="row">
-                                <div class="input-field col s3">
-                                    <input type="text" name="current_state" id="current_state">
-                                    <label for="current_state">Current State</label>
-                                </div>
-                                <div class="input-field col s3">
-                                    <input type="text" name="symbol" id="symbol">
-                                    <label for="symbol">Symbol</label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input type="text" name="destination" id="destination">
-                                    <label for="destination">Destination</label>
-                                </div>
-                                <div class="input-field col s2">
-                                    <a href="#" onclick="addRow()"><i class="material-icons">add</i></a>
-                                    <a><i class="material-icons" style="color: red;">delete</i></a>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <h5>Transitions</h5>
+                        </div>
+                        <div class="col s12 m4 pull-m2">
+                            <a onclick="addTMRow()" class="btn deep-purple darken-1">Add Transition</a>
+                        </div>
+                    </div>
+                    <div id="TMtransitions">
+                        <div id="TMtransitionRow">
                         </div>
                     </div>
 
@@ -73,15 +62,6 @@
     <% end %>
 </div>
 
-<script type="text/javascript">
-
-    var transition_row = "";
-
-    function addRow(){
-        transition_row = $("#transitionRow").html();
-        $("#transitions").append(transition_row);
-    }
-
-    
-
-</script>
+<div style="display: none;" id="new_tm_transition_row">
+    <%= render partial: "transitions" %>
+</div>
