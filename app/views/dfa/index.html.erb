@@ -28,7 +28,15 @@
                             <label for="accept">Accept States</label>
                         </div>
                     </div>
-                    <h5>Transitions</h5>
+                    </br>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <h5>Transitions</h5>
+                        </div>
+                        <div class="col s12 m4 pull-m2">
+                            <a class="btn deep-purple darken-1" onclick="addRow()">Add Transition</a>
+                        </div>
+                    </div> 
                     <div id="transitions">
                         <div id="transitionRow">
                             <div class="row">
@@ -45,7 +53,6 @@
                                     <label for="destination">Destination</label>
                                 </div>
                                 <div class="input-field col s2">
-                                    <a href="#" onclick="addRow()"><i class="material-icons">add</i></a>
                                     <a href="#" onclick="removeRow()"><i class="material-icons" style="color: red;">delete</i></a>
                                 </div>
                             </div>
