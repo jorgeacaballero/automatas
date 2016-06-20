@@ -25,3 +25,6 @@ function removeRow(element){
 	element.parent().parent().remove();
 }
 
+function addPDARow(){
+	$("#PDAtransitionRow").append($("#new_pda_transition_row").html());
+}
