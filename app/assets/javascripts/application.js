@@ -15,4 +15,13 @@
 //= require materialize/extras/nouislider
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree
+
+function addRow(){
+	$("#transitionRow").append($("#new_transition_row").html());
+}
+
+function removeRow(element){
+	element.parent().parent().remove();
+}
+
