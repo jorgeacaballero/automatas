@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <td>δ</td>
-            <td> 
+            <td>
                 <table> <!--Comienza la tabla anidada de transiciones -->
                     <thead>
                         <tr>
@@ -69,6 +69,7 @@
         <%= hidden_field_tag 'alphabet', @pda.alphabet %>
         <%= hidden_field_tag 'start', @pda.start %>
         <%= hidden_field_tag 'accept', @pda.accept %>
+        <%= hidden_field_tag 'stack_user', @pda.stack_user %>
         <div class="input-field col s12">
             <%= submit_tag("Consume") %>
         </div>

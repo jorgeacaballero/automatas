@@ -69,7 +69,7 @@ class PdaController < ApplicationController
               id: i.to_s,
               source: keyt,
               target: val['to'],
-              label: "#{key}, #{val['pop']} -> #{val['push']}"}
+              label: "#{key}, #{val['pop'] ? val['pop'] : '&'} -> #{val['push'] ? val['push'] : '&'}"}
             }
             edges.push(e)
             i = i+1
@@ -90,6 +90,7 @@ class PdaController < ApplicationController
         @pda.alphabet = hash['alphabet'].split(' ')
         @pda.start = hash['start']
         @pda.accept = hash['accept'].split(' ')
+        @pda.stack_user = hash['stack_user'].split(' ')
         @pda.transitions = {"S"=>{"&"=>{"to"=>"A", "push"=>"@"}},
                             "A"=>{"("=>{"to"=>"A", "push"=>"x"}, ")"=>{"to"=>"B", "pop"=>"x"}},
                             "B"=>{"("=>{"to"=>"A", "push"=>"x"}, ")"=>{"to"=>"B", "pop"=>"x"},

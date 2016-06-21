@@ -27,6 +27,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'materialize-sass'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+group :development do
+  gem "better_errors"
+end
+gem "binding_of_caller"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
