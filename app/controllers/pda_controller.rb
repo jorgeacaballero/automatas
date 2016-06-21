@@ -25,6 +25,20 @@ class PdaController < ApplicationController
                             "B"=>{"("=>{"to"=>"A", "push"=>"x"}, ")"=>{"to"=>"B", "pop"=>"x"}, 
                             "&"=>{"to"=>"ha", "pop"=>"@"}}
                         }
+
+
+
+        nodes = []
+
+        @pda.states.each do |s|
+            n = { data: { id: s }}
+            nodes.push(n)
+        end
+
+
+        @bringElements = {
+          nodes: nodes
+        }.to_json.html_safe
     end
     def consume
         hash = pda_params
