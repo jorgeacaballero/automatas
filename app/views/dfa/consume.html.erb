@@ -128,11 +128,12 @@
         console.log(elems[i]._private.data, i);
     }
 
-    var getEdgeId = function(state, via){
+    var getEdgeId = function(source, dest, via){
         var ids = []
         for (var i = 0; i < elems.length; i++) {
             if (elems[i].isEdge()) {
-                if (elems[i]._private.data.source == state && elems[i]._private.data.label == via) {
+                if (elems[i]._private.data.target == dest && elems[i]._private.data.label == via && elems[i]._private.data.source == source) {
+                    console.log("AJA", i)
                     return i
                 }
             }
@@ -158,28 +159,31 @@
             console.log("Hello", i);
             //First time
             if (i === 0) {
+                console.log(movements[i]);
                 console.log(actualStateId, actualEdgeId);
-                actualStateId = getStateId(movements[i]);
+                actualStateId = getStateId(movements[i].state);
                 elems[actualStateId].addClass('highlighted');
             }
 
             //Second time times
             if (i == 1) {
+                console.log(movements[i]);
                 console.log(actualStateId, actualEdgeId);
                 elems[actualStateId].removeClass('highlighted');
                 actualStateId = getStateId(movements[i].state);
-                actualEdgeId = getEdgeId(movements[i].via);
+                actualEdgeId = getEdgeId(movements[i-1].state, movements[i].state, movements[i].via);
                 elems[actualStateId].addClass('highlighted');
                 elems[actualEdgeId].addClass('highlighted');
             }
 
             //Next ones
             if (i > 1) {
+                console.log(movements[i]);
                 console.log(actualStateId, actualEdgeId);
                 elems[actualStateId].removeClass('highlighted');
                 elems[actualEdgeId].removeClass('highlighted');
                 actualStateId = getStateId(movements[i].state);
-                actualEdgeId = getEdgeId(movements[i].via);
+                actualEdgeId = getEdgeId(movements[i-1].state, movements[i].state, movements[i].via);
                 elems[actualStateId].addClass('highlighted');
                 elems[actualEdgeId].addClass('highlighted');
             }
