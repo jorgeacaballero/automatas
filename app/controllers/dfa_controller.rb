@@ -15,11 +15,14 @@ class DfaController < ApplicationController
         @dfa.start = hash['start']
         @dfa.accept = hash['accept'].split(/\s*,\s*/)
         @dfa.transitions = JSON.parse(hash['transitions'])
-        trans_map = {}
+        trans_map = Hash.new
         @dfa.transitions.each do |t|
-          trans_map = trans_map.merge!(t['current_state'] => {
-            t['symbol'] => t['destination']
-          })
+          if trans_map[t['current_state']] == nil
+            trans_map[t['current_state']] = {t['symbol'] => t['destination']}
+          else
+            trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => t['destination']})
+          end
+          
         end
         @dfa.transitions = trans_map
 
@@ -53,7 +56,7 @@ class DfaController < ApplicationController
       i = 1
       @dfa.transitions.each do |keyt, valt|
         valt.each do |key, val|
-          n = { data: { id: "#{keyt}#{val}", source: keyt, target: val, label: key } }
+          n = { data: { id: "#{i}", source: keyt, target: val, label: key } }
           edges.push(n)
           i = i+1
         end
