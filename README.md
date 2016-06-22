@@ -30,12 +30,12 @@ Las gramáticas libres de contexto son útiles para describir expresiones aritm�
 ```
 
 Un PDA es una seis-tupla A = (Q , Σ, Γ, δ, q0, F), siendo:
-Q = conjunto nito de estados.
-Σ = conjunto nito de símbolos del álfabeto.
-Γ = conjunto nito es el álfabeto de la pila.
+Q = conjunto finito de estados.
+Σ = conjunto finito de símbolos del álfabeto.
+Γ = conjunto finito del alfabeto de la pila.
+δ = La función de transición entre estados, δ: Q x Σ x Γ  → P(QxΓ).
 q0 = es el estado inicial (denotado con echa → a inicio)
 F = conjunto de estados nales (o estados de aceptación), F ⊆ Q
-δ = La función de transición entre estados, δ: Q x Σ x Γ  → P(QxΓ).
 ```
 
 ###Máquina de Turing
@@ -44,14 +44,16 @@ Una máquina de Turing es un dispositivo que manipula símbolos sobre una tira d
 Originalmente fue definida por el matemático inglés Alan Turing como una «máquina automática» en 1936, en la revista Proceedings of the London Mathematical Society, La máquina de Turing no está diseñada como una tecnología de computación práctica, sino como un dispositivo hipotético que representa una máquina de computación. Las máquinas de Turing ayudan a los científicos a entender los límites del cálculo mecánico.
 
 
-#####TM TODO
+#####TM
 ```
-Un DFA es una quíntupla A = (Q , Σ, δ, q0, F), siendo:
-Q = conjunto nito de estados.
-Σ = conjunto nito de símbolos del alfabeto.
-q0 = es el estado inicial (denotado con echa → a inicio)
-F = conjunto de estados nales (o estados de aceptación), F ⊆ Q
-δ = La función de transición entre estados, δ: Q x Σ → Q.
+Un DFA es una siete-tupla A = (Q , Σ, Γ, δ, q0, qa, qr), siendo:
+Q = Conjunto finito de estados.
+Σ = Conjunto finito del alfabeto de entrada. No contiene el símbolo blanco ' '.
+Γ = Conjunto finito del alfabeto de la cinta donde ' ' ∈ Γ y Σ ⊂ Γ.
+δ = La función de transición entre estados, δ: Q x Γ  → Q x Γ x {L,R}.
+q0 = Es el estado inicial (denotado con flecha → a inicio)
+qa = Estado final de aceptación, qa ∈ Q
+qr = Estado final de rechazo, qr ∈ Q
 ```
 
 
@@ -63,19 +65,19 @@ El sistema es capaz de las siguientes funciones:
 
 1. **DFA**
 
-    a. Definir el DFA (Construirlo) TODO Explicar mas
+    a. Definir el DFA (Construirlo): Se recibe del usuario los parámetros que se ingresan a la definición formal del DFA. Al terminar este proceso, se le muestra al usuario una tabla con la definición formal del DFA creado.
 
-    b. DFA Dibujado TODO Explicar mas
+    b. DFA Dibujado: Al mostrarle al usuario la definición formal del DFA, se le muestra también un dibujo del mismo, basado en los mismos parámetros recibidos anteriormente.
 
-    c. Dado un input determinar si el DFA lo acepta o rechaza, animar el grafo segun la cadena de entrada. TODO Explicar mas
+    c. Computación & Animación: Dado un input determinar si el DFA lo acepta o rechaza, animar el grafo segun la cadena de entrada. Se le permite al usuario ingresar una cadena para que peuda ver el proceso animado del DFA al momento de evaluar la cadena.
 
 2. **PDA**
     
-    a. Definir el PDA (Construirlo) TODO Explicar mas
+    a. Definir el PDA (Construirlo): Se recibe del usuario los parámetros que se ingresan a la definición formal del PDA. Al terminar este proceso, se le muestra al usuario una tabla con la definición formal del PDA creado.
     
-    b. PDA Dibujado + Mostrar movimiento stack TODO Explicar mas
+    b. PDA Dibujado: Al mostrarle al usuario la definición formal del PDA, se le muestra también un dibujo del mismo, basado en los mismos parámetros recibidos anteriormente.
     
-    c. Dado un input determinar si el PDA lo acepta o rechaza, animar el grafo segun la cadena de entrada. TODO Explicar mas
+    c. Computación & Animación: Dado un input determinar si el DFA lo acepta o rechaza, animar el grafo segun la cadena de entrada. Se le permite al usuario ingresar una cadena para que peuda ver el proceso animado del DFA al momento de evaluar la cadena.
 
 
 3. **TM**
