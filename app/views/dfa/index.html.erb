@@ -29,6 +29,7 @@
                         </div>
                     </div>
                     </br>
+                    <button onclick="getData()">Probar</button>
                     <div class="row">
                         <div class="col s12 m4">
                             <h5>Transitions</h5>
@@ -65,23 +66,35 @@
     var transition_row = "";
     var current_stateID = 0;
     var symbolID = 0;
-    var destination = 0;
+    var destinationID = 0;
+    var length = 0;
 
     function addRow(){
         transition_row = "<div class=\"row\">";
         transition_row += "<div class=\"input-field col s3\">";
         transition_row += "<label for=\"current_state\">Current State</label>";
-        transition_row += "<input name=\"current_state\" type=\"text\" class=\"validate current_state\"></style></div>";
+        transition_row += "<input id='current_state_'"+current_stateID+" name=\"current_state\" type=\"text\" class=\"validate current_state\"></style></div>";
         transition_row += "<div class=\"input-field col s3\">";
         transition_row += "<label for=\"symbol\">Symbol</label>";
-        transition_row += "<input name=\"symbol\" type=\"text\" class=\"validate symbol\"></div>";
+        transition_row += "<input id='symbol_'"+symbolID+" name=\"symbol\" type=\"text\" class=\"validate symbol\"></div>";
         transition_row += "<div class=\"input-field col s4\">";
         transition_row += "<label for=\"destination\">Destination</label>";
-        transition_row += "<input type=\"text\" class=\"validate destination\"></div>";
+        transition_row += "<input id='destination_'"+destinationID+" type=\"text\" class=\"validate destination\"></div>";
         transition_row += "<div class=\"input-field col s2\">";
         transition_row += "<a href=\"#\" class=\"remove-row\" onclick='removeRow($(this))'>";
         transition_row += "<i class=\"material-icons deep-purple-text text-darken-1\">delete</i></a></div></div>";
         $("#transitionRow").append(transition_row);
+        current_stateID += 1;
+        symbolID += 1;
+        destinationID += 1;
+    }
+
+    length = current_stateID;
+
+    function getData(){
+        for(var i=0; i < length-1; i++){
+            alert($("#current_state_"+length).val()); 
+        }
     }
 
     function removeRow(element){
