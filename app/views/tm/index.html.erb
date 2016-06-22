@@ -35,6 +35,9 @@
                         <div class="col s12 m4 pull-m2">
                             <a onclick="addRow()" class="btn deep-purple darken-1">Add Transition</a>
                         </div>
+                        <div class="col s12 m1 pull-m3">
+                            <a onclick="ejemplo1()" class="btn deep-purple darken-1">Ejemplo 1</a>
+                        </div>
                     </div>
                     <div id="TMtransitions">
                         <div id="TMtransitionRow">
@@ -128,5 +131,87 @@
     function removeRow(element){
         element.parent().parent().remove();
     }
+
+    function ejemplo1(){
+        $("#states").focus();
+        $("#states").val("A,B,C");
+        $("#inputAlphabet").focus();
+        $("#inputAlphabet").val("0,1");
+        $("#tapeAlphabet").focus();
+        $("#tapeAlphabet").val("0,1");
+        $("#start").focus();
+        $("#start").val("A");
+
+        for(var i = 0; i < 5; i++){
+            addRow();
+        }
+
+        $("#current_state_0").focus();
+        $("#current_state_0").val("A");
+        $("#current_state_1").focus();
+        $("#current_state_1").val("A");
+        $("#current_state_2").focus();
+        $("#current_state_2").val("B");
+        $("#current_state_3").focus();
+        $("#current_state_3").val("B");
+        $("#current_state_4").focus();
+        $("#current_state_4").val("C");
+        $("#current_state_5").focus();
+        $("#current_state_5").val("C");
+
+        $("#symbol_0").focus();
+        $("#symbol_0").val("0");
+        $("#symbol_1").focus();
+        $("#symbol_1").val("1");
+        $("#symbol_2").focus();
+        $("#symbol_2").val("1");
+        $("#symbol_3").focus();
+        $("#symbol_3").val("0");
+        $("#symbol_4").focus();
+        $("#symbol_4").val("1");
+        $("#symbol_5").focus();
+        $("#symbol_5").val("0");
+
+        $("#destination_0").focus();
+        $("#destination_0").val("A");
+        $("#destination_1").focus();
+        $("#destination_1").val("B");
+        $("#destination_2").focus();
+        $("#destination_2").val("B");
+        $("#destination_3").focus();
+        $("#destination_3").val("C");
+        $("#destination_4").focus();
+        $("#destination_4").val("ACCEPT");
+        $("#destination_5").focus();
+        $("#destination_5").val("A");
+
+        $("#write_0").focus();
+        $("#write_0").val("0");
+        $("#write_1").focus();
+        $("#write_1").val("1");
+        $("#write_2").focus();
+        $("#write_2").val("1");
+        $("#write_3").focus();
+        $("#write_3").val("0");
+        $("#write_4").focus();
+        $("#write_4").val("1");
+        $("#write_5").focus();
+        $("#write_5").val("0");
+
+        $("#move_0").focus();
+        $("#move_0").val("R");
+        $("#move_1").focus();
+        $("#move_1").val("R");
+        $("#move_2").focus();
+        $("#move_2").val("R");
+        $("#move_3").focus();
+        $("#move_3").val("R");
+        $("#move_4").focus();
+        $("#move_4").val("R");
+        $("#move_5").focus();
+        $("#move_5").val("R");
+
+    }
+
 
 </script>
