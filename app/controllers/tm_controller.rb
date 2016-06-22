@@ -30,8 +30,10 @@ class TmController < ApplicationController
             e = { data: {
               id: i.to_s,
               source: keyt,
+              move: val['move'],
               target: val['to'],
-              label: "#{key} -> #{val['write'] ? val['write'] : '&'}, #{val['move']}"}
+              label: "#{key} -> #{val['write'] ? val['write'] : '&'}, #{val['move']}"
+                }
             }
             edges.push(e)
             i = i+1
