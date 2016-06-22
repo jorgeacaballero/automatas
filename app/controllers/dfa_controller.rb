@@ -69,6 +69,27 @@ class DfaController < ApplicationController
 
         @compute = @dfa.consume(hash['input_string'])
 
+        nodes = []
+        edges = []
+
+        @dfa.states.each do |s|
+          n = { data: { id: s } }
+          nodes.push(n)
+        end
+
+        i = 1
+        @dfa.transitions.each do |keyt, valt|
+          valt.each do |key, val|
+            n = { data: { id: i.to_s, source: keyt, target: val, label: key } }
+            edges.push(n)
+            i = i+1
+          end
+        end
+
+        @churro = {
+            nodes: nodes,
+            edges: edges
+        }.to_json.html_safe
     end
 
     private
