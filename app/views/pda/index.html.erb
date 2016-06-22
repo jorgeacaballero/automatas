@@ -45,13 +45,13 @@
                         </div>
                     </div>
 
-                    <button onclick="getData()">Probar</button>
+                    
                     <%= hidden_field_tag 'transitions', [] %>
 
                     <div class="row">
                         <div class="center">
                             <div class="input-field col s12">
-                                <%= submit_tag("Compute",:class => "btn deep-purple darken-1") %>
+                                <button class="btn deep-purple darken-1"onclick="getData()">Compute</button>
                             </div>
                         </div>
                     </div>
@@ -119,10 +119,12 @@
             array_inside.push($("#current_state_"+i).val());
             array_inside.push($("#symbol_"+i).val());
             array_inside.push($("#destination_"+i).val());
+            array_inside.push($("#push_"+i).val());
+            array_inside.push($("#pop_"+i).val());
             array_outside.push("{"+array_inside+"}");
             array_inside = []; 
         }
-        console.log(array_outside);
+        alert(array_outside);
         $('form').submit();
         array_outside = [];
     }
