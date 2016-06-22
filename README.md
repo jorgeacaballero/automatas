@@ -69,7 +69,7 @@ El sistema es capaz de las siguientes funciones:
 
     b. DFA Dibujado: Al mostrarle al usuario la definición formal del DFA, se le muestra también un dibujo del mismo, basado en los mismos parámetros recibidos anteriormente.
 
-    c. Computación & Animación: Dado un input determinar si el DFA lo acepta o rechaza, animar el grafo segun la cadena de entrada. Se le permite al usuario ingresar una cadena para que peuda ver el proceso animado del DFA al momento de evaluar la cadena.
+    c. Computación & Animación: Dado un input determinar si el DFA lo acepta o rechaza, animar el grafo segun la cadena de entrada. Se le permite al usuario ingresar una cadena para que pueda ver el proceso animado del DFA al momento de evaluar la cadena.
 
 2. **PDA**
     
@@ -77,16 +77,16 @@ El sistema es capaz de las siguientes funciones:
     
     b. PDA Dibujado: Al mostrarle al usuario la definición formal del PDA, se le muestra también un dibujo del mismo, basado en los mismos parámetros recibidos anteriormente.
     
-    c. Computación & Animación: Dado un input determinar si el DFA lo acepta o rechaza, animar el grafo segun la cadena de entrada. Se le permite al usuario ingresar una cadena para que peuda ver el proceso animado del DFA al momento de evaluar la cadena.
+    c. Computación & Animación: Dado un input determinar si el PDA lo acepta o rechaza, animar el grafo segun la cadena de entrada. Se le permite al usuario ingresar una cadena para que pueda ver el proceso animado del PDA al momento de evaluar la cadena. Adicionalmente, el usuario puede observar los movimientos del Stack.
 
 
 3. **TM**
 
-    a. Definir / Construir TM TODO Explicar mas
+    a. Definir / Construir TM: Se recibe del usuario los parámetros que se ingresan a la definición formal de la TM. Al terminar este proceso, se le muestra al usuario una tabla con la definición formal de la TM creada.
     
-    b. Dibujar TM TODO Explicar mas
+    b. Dibujar TM: Al mostrarle al usuario la definición formal de la TM, se le muestra también un dibujo de la mismo, basada en los mismos parámetros recibidos anteriormente.
     
-    c. Dado un input, animar el grafo segun la cadena de entrada. TODO Explicar mas
+    c. Computación & Animación: Dado un input determinar si el PDA lo acepta o rechaza, animar el grafo segun la cadena de entrada. Se le permite al usuario ingresar una cadena para que pueda ver el proceso animado del PDA al momento de evaluar la cadena. Adicionalmente, el usuario puede observar las configuraciones de la TM en el momento de ejecución.
 
 
 ##Tecnologías
@@ -117,9 +117,7 @@ Cytoscape es una plataforma de software de bioinformática de código abierto pa
 
 ##Modo de Uso
 
-Para preparar el servidor, navegar al directorio donde se encuentra el proyecto y correr `bundle install` seguido por `rails s`. Navegar a [http://localhost:3000/](http://localhost:3000/).
-
-Como pantalla principal se encuentra 
+En este 
 
 ##Funciones Internas
 
