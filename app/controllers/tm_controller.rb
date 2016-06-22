@@ -13,9 +13,50 @@ class TmController < ApplicationController
         @tm.states.push('REJECT')
         #@tm.alphabet = hash['alphabet'].split(',')
         @tm.start = hash['start']
-        @tm.transitions = {"A"=>{"0"=>{"to"=>"A", "write"=>0, "move"=>"R"}, "1"=>{"to"=>"B", "write"=>1, "move"=>"R"}}, "B"=>{"1"=>{"to"=>"B", "write"=>1, "move"=>"R"}, "0"=>{"to"=>"C", "write"=>0, "move"=>"R"}}, "C"=>{"1"=>{"to"=>"ACCEPT", "write"=>1, "move"=>"R"}, "0"=>{"to"=>"A", "write"=>0, "move"=>"R"}}}
         @tm.inputAlphabet = hash['inputAlphabet'].split(',')
         @tm.tapeAlphabet = hash['tapeAlphabet'].split(',')
+        @tm.transitions = JSON.parse(hash['transitions'])
+        trans_map = Hash.new
+        
+
+        {
+          "A" => {
+            "0" => {
+              "to"=>"A",
+              "write"=>0,
+              "move"=>"R"
+              },
+            "1" => {
+              "to"=>"B",
+              "write"=>1,
+              "move"=>"R"
+            }
+          },
+          "B" => {
+            "1" => {
+              "to"=>"B",
+              "write"=>1,
+              "move"=>"R"
+            }, 
+            "0" => {
+              "to"=>"C",
+              "write"=>0,
+              "move"=>"R"
+            }
+          }, 
+          "C" => {
+            "1" => {
+              "to"=>"ACCEPT",
+              "write"=>1,
+              "move"=>"R"
+            }, 
+            "0" => {
+              "to"=>"A",
+              "write"=>0,
+              "move"=>"R"
+            }
+          }
+        }
 
 
         nodes = []

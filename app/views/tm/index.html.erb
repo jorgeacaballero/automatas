@@ -111,14 +111,16 @@
 
     function getData(){
         for(var i=0; i < id; i++){
-            array_inside.push($("#current_state_"+i).val());
-            array_inside.push($("#symbol_"+i).val());
-            array_inside.push($("#destination_"+i).val());
-            array_inside.push($("#write_"+i).val());
-            array_inside.push($("#move_"+i).val());
-            array_outside.push("{"+array_inside+"}");
-            array_inside = []; 
+            res = {
+                current_state: $("#current_state_"+i).val(),
+                symbol: $("#symbol_"+i).val(),
+                destination: $("#destination_"+i).val(),
+                write: $("#write_"+i).val(),
+                move: $("#move_"+i).val()
+            }
+            array_outside.push(res);
         }
+        $("[name='transitions']").val(JSON.stringify(array_outside));
         $('form').submit();
         array_outside = [];
     }
