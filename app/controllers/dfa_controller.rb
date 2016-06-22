@@ -78,7 +78,7 @@ class DfaController < ApplicationController
         @dfa.start = hash['start']
         @dfa.accept = hash['accept'].split(' ')
         puts(@dfa.transitions)
-        @dfa.transitions = JSON.parse(@dfa.transitions)
+        @dfa.transitions = JSON.parse(hash['transitions'])
         @compute = @dfa.consume(hash['input_string'])
 
         nodes = []
