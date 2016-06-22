@@ -117,7 +117,12 @@ Cytoscape es una plataforma de software de bioinformática de código abierto pa
 
 ##Modo de Uso
 
-En este 
+####DFA
+
+
+####PDA
+
+####TM
 
 ##Funciones Internas
 
