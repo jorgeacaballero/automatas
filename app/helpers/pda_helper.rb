@@ -100,8 +100,9 @@ module PdaHelper
 				heads.each do |head|
 					if has_transition?(head, symbol)
 						transition(head, symbol).each { |t| newHeads << t 
-							movements.push({state: head, via: symbol})
+							
 						}
+						movements.push({state: head, via: symbol})
 					end
 				end
 				heads = newHeads
