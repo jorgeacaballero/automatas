@@ -23,24 +23,31 @@ class PdaController < ApplicationController
         @pda.transitions = JSON.parse(hash['transitions'])
         trans_map = Hash.new
         @pda.transitions.each do |t|
-          if trans_map[t['current_state']] == nil
-            trans_map[t['current_state']] = {t['symbol'] => {"to"=>t['destination']}}
-            if t['push'] != '-' && t['push'] != nil
-              trans_map[t['current_state']] = {t['symbol'] => {"push"=>t['push']}}
-            end
-            if t['pop'] != '-' && t['pop'] != nil
-              trans_map[t['current_state']] = {t['symbol'] => {"pop"=>t['pop']}}
-            end
+          if trans_map[t['current_state']] == nil && t['push'] != '-' && t['push'] != nil && t['pop'] != '-' && t['pop'] != nil
+
+            trans_map[t['current_state']] = {t['symbol'] => {"to"=>t['destination'],"push"=>t['push'],"pop"=>t['pop']}}
           else
-            trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"to"=>t['destination']}})
-            if t['push'] != '-' && t['push'] != nil
-              trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"push"=>t['push']}})
+            if trans_map[t['current_state']] == nil && t['push'] != '-' && t['push'] != nil && (t['pop'] == '-' || t['pop'] == nil)
+              trans_map[t['current_state']] = {t['symbol'] => {"to"=>t['destination'],"push"=>t['push']}}
+            else
+              if trans_map[t['current_state']] == nil && t['pop'] != '-' && t['pop'] != nil && (t['push'] == '-' || t['push'] == nil)
+                trans_map[t['current_state']] = {t['symbol'] => {"pop"=>t['pop']}}
+
+              else 
+                if trans_map[t['current_state']] != nil && t['push'] != '-' && t['push'] != nil && t['pop'] != '-' && t['pop'] != nil
+                  trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"to"=>t['destination'],"push"=>t['push'],"pop"=>t['pop']}})
+                else
+                    if trans_map[t['current_state']] != nil && t['push'] != '-' && t['push'] != nil && (t['pop'] == '-' || t['pop'] == nil)
+                      trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"to"=>t['destination'],"push"=>t['push']}})
+                    else
+                        if trans_map[t['current_state']] != nil && t['pop'] != '-' && t['pop'] != nil && (t['push'] == '-' || t['push'] == nil)
+                          trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"to"=>t['destination'],"pop"=>t['pop']}})
+                        end
+                    end
+                end
+              end
             end
-            if t['pop'] != '-' && t['pop'] != nil
-              trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"pop"=>t['pop']}})
-            end
-          end
-          
+          end          
         end
         @pda.transitions = trans_map
         #@pda.transitions = {"S" => {
