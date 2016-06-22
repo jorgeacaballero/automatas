@@ -81,10 +81,12 @@ module PdaHelper
 		def consume(input)
 			movements = []
 			heads, @stack, accept = [@start], [], false
-
-			eTrans = transition(@start, '&') if has_transition?(@start, '&')
-			heads += eTrans
 			movements.push({state: heads, via: "-"})
+			eTrans = transition(@start, '&') if has_transition?(@start, '&')
+			movements.push({state: eTrans, via: "&"})
+
+			heads += eTrans
+			
 
 			input.each_char do |symbol|
 				newHeads = []
