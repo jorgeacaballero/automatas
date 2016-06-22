@@ -31,7 +31,7 @@ class PdaController < ApplicationController
               trans_map[t['current_state']] = {t['symbol'] => {"to"=>t['destination'],"push"=>t['push']}}
             else
               if trans_map[t['current_state']] == nil && t['pop'] != '-' && t['pop'] != nil && (t['push'] == '-' || t['push'] == nil)
-                trans_map[t['current_state']] = {t['symbol'] => {"pop"=>t['pop']}}
+                trans_map[t['current_state']] = {t['symbol'] => {"to"=>t['destination'],"pop"=>t['pop']}}
 
               else 
                 if trans_map[t['current_state']] != nil && t['push'] != '-' && t['push'] != nil && t['pop'] != '-' && t['pop'] != nil
