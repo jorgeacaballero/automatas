@@ -84,17 +84,19 @@ module PdaHelper
 
 			eTrans = transition(@start, '&') if has_transition?(@start, '&')
 			heads += eTrans
-			movements.push(heads)
+			movements.push({state: heads, via: "-"})
 
 			input.each_char do |symbol|
 				newHeads = []
 				heads.each do |head|
 					if has_transition?(head, symbol)
-						transition(head, symbol).each { |t| newHeads << t }
+						transition(head, symbol).each { |t| newHeads << t 
+							movements.push({state: head, via: symbol})
+						}
 					end
 				end
 				heads = newHeads
-				movements.push(heads)
+				
 				break if heads.empty?
 			end
 			accept = includes_accept_state? heads
