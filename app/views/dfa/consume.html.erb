@@ -72,6 +72,7 @@
         <%= hidden_field_tag 'alphabet', @dfa.alphabet %>
         <%= hidden_field_tag 'start', @dfa.start %>
         <%= hidden_field_tag 'accept', @dfa.accept %>
+        <%= hidden_field_tag 'transitions', @dfa.transitions.to_json %>
         <div class="input-field col s12">
             <%= submit_tag("Consume") %>
         </div>
