@@ -117,7 +117,9 @@ Cytoscape es una plataforma de software de bioinformática de código abierto pa
 
 ##Modo de Uso
 
-En este 
+Para preparar el servidor, navegar al directorio donde se encuentra el proyecto y correr `bundle install` seguido por `rails s`. Navegar a [http://localhost:3000/](http://localhost:3000/).
+
+Como pantalla principal se encuentra 
 
 ##Funciones Internas
 

@@ -1,4 +1,8 @@
-<%= @compute[:accept] %>
+<%= @compute %>
+<script type="text/javascript">
+    Materialize.toast(<%= @compute[:accept] %>, 4000)
+</script>
+>>>>>>> 9c925ed957f82d4a11201a8ae9a65ac46c708320
 <div class="cy" id="cy"></div>
 <table class='striped'>
     <thead>
@@ -90,7 +94,12 @@
       style: cytoscape.stylesheet()
         .selector('node')
           .css({
-            'content': 'data(id)'
+            'content': 'data(id)',
+            'text-valign': 'center',
+            'color': 'white',
+            'text-outline-width': 2,
+            'backgrund-color': '#999',
+            'text-outline-color': '#999'
           })
         .selector('edge')
           .css({
