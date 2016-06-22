@@ -11,6 +11,7 @@
         <%= hidden_field_tag 'start', @tm.start %>
         <%= hidden_field_tag 'inputAlphabet', @tm.inputAlphabet %>
         <%= hidden_field_tag 'tapeAlphabet', @tm.tapeAlphabet %>
+        <%= hidden_field_tag 'transitions', @tm.transitions.to_json %>
         <div class="input-field col s12">
             <%= submit_tag("Consume") %>
         </div>
