@@ -70,6 +70,7 @@
         <%= hidden_field_tag 'start', @pda.start %>
         <%= hidden_field_tag 'accept', @pda.accept %>
         <%= hidden_field_tag 'stack_user', @pda.stack_user %>
+        <%= hidden_field_tag 'transitions', @pda.transitions.to_json %>
         <div class="input-field col s12">
             <%= submit_tag("Consume") %>
         </div>
