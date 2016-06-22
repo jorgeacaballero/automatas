@@ -14,13 +14,13 @@ module TmHelper
 		end
 
 		def feed(input) 
-			@tape = Tape.new(input)
+			@tape = TMTape.new(input)
 			@accept = false
 			@reject = false
 
 			stateHead = @start.to_s
 			input.each_char do |symbol|
-				oState = transition(stateHead, symbol)
+				toState = transition(stateHead, symbol)
 				if @accept || @reject
 					break
 				else
@@ -33,7 +33,7 @@ module TmHelper
 				accept: @accept,
 				reject: @reject,
 				head: stateHead,
-				tape: @tape.memory,
+				tape: @tape.storage,
 				output: @tape.output
 			}
 			resp
@@ -71,13 +71,13 @@ module TmHelper
 			if elements
 				@storage = []
 				@storage << '@' unless elements[0] == '@'
-				@storgae += elements.split('')
+				@storage += elements.split('')
 				@storage << '@' unless elements[-1] == '@'
 				@head = 1
 			end
 		end
 
-		def delta(read, write, move)
+		def transition(read, write, move)
 			if read == @storage[@head]
 				@storage[@head] = write
 				case move
@@ -94,7 +94,7 @@ module TmHelper
 			end
 		end
 
-		def response
+		def output
 			@storage.join.sub(/^@*/, '').sub(/@*$/, '')
 		end
 	end
