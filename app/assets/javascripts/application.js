@@ -17,18 +17,10 @@
 //= require turbolinks
 //= require_tree
 
-function addRow(){
-	$("#transitionRow").append($("#new_transition_row").html());
-}
-
 function addPDARow(){
 	$("#PDAtransitionRow").append($("#new_pda_transition_row").html());
 }
 
 function addTMRow(){
 	$("#TMtransitionRow").append($("#new_tm_transition_row").html());
-}
-
-function removeRow(element){
-	element.parent().parent().remove();
 }

@@ -59,3 +59,47 @@
     <%= render partial: "transitions" %>
 </div>
 
+<div class="row">
+    <div class="input-field col s3">
+        <label for="current_state">Current State</label>
+        <input name="current_state" type="text" class="validate current_state">
+    </div>
+    <div class="input-field col s3">
+        <label for="symbol">Symbol</label>
+        <input name="symbol" type="text" class="validate symbol">
+    </div>
+    <div class="input-field col s4">
+        <label for="destination">Destination</label>
+        <input type="text" class="validate destination">
+    </div>
+    <div class="input-field col s2">
+        <a href="#" class="remove-row" onclick="removeRow($(this))"><i class="material-icons deep-purple-text text-darken-1">delete</i></a>
+    </div>
+</div>
+
+<script>
+
+    var transition_row = "";
+
+    function addRow(){
+        transition_row = "<div class=\"row\">";
+        transition_row += "<div class=\"input-field col s3\">";
+        transition_row += "<label for=\"current_state\">Current State</label>";
+        transition_row += "<input name=\"current_state\" type=\"text\" class=\"validate current_state\"></style><div>";
+        transition_row += "<div class=\"input-field col s3\">";
+        transition_row += "<label for=\"symbol\">Symbol</label>";
+        transition_row += "<input name=\"symbol\" type=\"text\" class=\"validate symbol\"></div>";
+        transition_row += "<div class=\"input-field col s4\">";
+        transition_row += "<label for=\"destination\">Destination</label>";
+        transition_row += "<input type=\"text\" class=\"validate destination\"></div>";
+        transition_row += "<div class=\"input-field col s2\">";
+        transition_row += "<a href=\"#\" class=\"remove-row\" onclick='removeRow($(this))'><i class=\"material-icons deep-purple-text text-darken-1\">delete</i></a></div></div>";
+        $("#transitionRow").append(transition_row);
+    }
+
+    function removeRow(element){
+        element.parent().parent().remove();
+    }
+
+
+</script>
