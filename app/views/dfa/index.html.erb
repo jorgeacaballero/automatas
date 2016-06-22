@@ -70,10 +70,13 @@
     var id = 0;
     var length = 0;
 
+    var array_inside = [];
+    var array_outside = [];
+
     function addRow(){
-        current_stateID += ID;
-        symbolID += ID;
-        destinationID += ID;
+        current_stateID += id;
+        symbolID += id;
+        destinationID += id;
         transition_row = "<div class=\"row\">";
         transition_row += "<div class=\"input-field col s3\">";
         transition_row += "<label for=\"current_state\">Current State</label>";
@@ -89,13 +92,14 @@
         transition_row += "<i class=\"material-icons deep-purple-text text-darken-1\">delete</i></a></div></div>";
         $("#transitionRow").append(transition_row);
         id += 1;
+        current_stateID = "current_state_";
+        symbolID = "symbol_";
+        destinationID = "destination_";
     }
 
-    length = id;
-
     function getData(){
-        for(var i=0; i < length-1; i++){
-            alert($("#current_state_"+length).val()); 
+        for(var i=0; i < id; i++){
+            alert($("#current_state_"+i).val()); 
         }
     }
 
