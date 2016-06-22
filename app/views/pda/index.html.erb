@@ -39,15 +39,15 @@
                         <div class="col s12 m4 pull-m2">
                             <a onclick="addRow()" class="btn deep-purple darken-1">Add Transition</a>
                         </div>
-                        <div class="col s12 m1 pull-m3">
+                        <!-- <div class="col s12 m1 pull-m3">
                             <a onclick="ejemplo1()" class="btn deep-purple darken-1">Ejemplo 1</a>
-                        </div>
+                        </div> -->
                         <div class="col s12 m1 pull-m2">
                             <a onclick="ejemplo2()" class="btn deep-purple darken-1">Ejemplo 2</a>
                         </div>
-                        <div class="col s12 m1 pull-m1">
+                        <!-- <div class="col s12 m1 pull-m1">
                             <a onclick="ejemplo3()" class="btn deep-purple darken-1">Ejemplo 3</a>
-                        </div>
+                        </div> -->
                     </div> 
                     <div id="PDAtransitions">
                         <div id="PDAtransitionRow">
@@ -218,7 +218,85 @@
     }
 
     function ejemplo2(){
+        $("#states").focus();
+        $("#states").val("S,A,B,ha");
+        $("#alphabet").focus();
+        $("#alphabet").val("(,),&");
+        $("#stack_alphabet").focus();
+        $("#stack_alphabet").val("0,$");
+        $("#initial").focus();
+        $("#initial").val("S");
+        $("#accept").focus();
+        $("#accept").val("ha");
 
+        for(var i = 0; i < 6;i++){
+            addRow();
+        }
+
+        $("#current_state_0").focus();
+        $("#current_state_0").val("S");
+        $("#current_state_1").focus();
+        $("#current_state_1").val("A");
+        $("#current_state_2").focus();
+        $("#current_state_2").val("A");
+        $("#current_state_3").focus();
+        $("#current_state_3").val("B");
+        $("#current_state_4").focus();
+        $("#current_state_4").val("B");
+        $("#current_state_5").focus();
+        $("#current_state_5").val("B");
+
+        $("#symbol_0").focus();
+        $("#symbol_0").val("&");
+        $("#symbol_1").focus();
+        $("#symbol_1").val("(");
+        $("#symbol_2").focus();
+        $("#symbol_2").val(")");
+        $("#symbol_3").focus();
+        $("#symbol_3").val("(");
+        $("#symbol_4").focus();
+        $("#symbol_4").val(")");
+        $("#symbol_5").focus();
+        $("#symbol_5").val("&");
+
+        $("#destination_0").focus();
+        $("#destination_0").val("A");
+        $("#destination_1").focus();
+        $("#destination_1").val("A");
+        $("#destination_2").focus();
+        $("#destination_2").val("B");
+        $("#destination_3").focus();
+        $("#destination_3").val("A");
+        $("#destination_4").focus();
+        $("#destination_4").val("B");
+        $("#destination_5").focus();
+        $("#destination_5").val("ha");
+
+        $("#push_0").focus();
+        $("#push_0").val("@");
+        $("#push_1").focus();
+        $("#push_1").val("x");
+        $("#push_2").focus();
+        $("#push_2").val("-");
+        $("#push_3").focus();
+        $("#push_3").val("x");
+        $("#push_4").focus();
+        $("#push_4").val("-");
+        $("#push_5").focus();
+        $("#push_5").val("-");
+
+        $("#pop_0").focus();
+        $("#pop_0").val("-");
+        $("#pop_1").focus();
+        $("#pop_1").val("-");
+        $("#pop_2").focus();
+        $("#pop_2").val("x");
+        $("#pop_3").focus();
+        $("#pop_3").val("-");
+        $("#pop_4").focus();
+        $("#pop_4").val("x");
+        $("#pop_5").focus();
+        $("#pop_5").val("@");
     }
 
     function ejemplo3(){
