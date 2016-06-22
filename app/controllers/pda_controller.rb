@@ -20,9 +20,9 @@ class PdaController < ApplicationController
         @pda.start = hash['start'] # "S"
         @pda.accept = hash['accept'].split(/\s*,\s*/) # "ha"
         @pda.stack_user = hash['stack_user'].split(/\s*,\s*/)
-        @dfa.transitions = JSON.parse(hash['transitions'])
+        @pda.transitions = JSON.parse(hash['transitions'])
         trans_map = Hash.new
-        @dfa.transitions.each do |t|
+        @pda.transitions.each do |t|
           if trans_map[t['current_state']] == nil
             trans_map[t['current_state']] = {t['symbol'] => {"to"=>t['destination']}}
             if t['push'] != '-'
@@ -42,7 +42,7 @@ class PdaController < ApplicationController
           end
           
         end
-        @dfa.transitions = trans_map
+        @pda.transitions = trans_map
         #@pda.transitions = {"S" => {
         #                      "&"=> {
         #                        "to"=>"A",
