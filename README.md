@@ -9,15 +9,15 @@ Para este proyecto se ha elegido usar un backend de [Ruby](https://www.ruby-lang
 ##Marco Teórico
 
 ###Lenguajes Regulares
-Los lenguajes regulares, de tipo 3 según la jerarquía de Chomsky, son aquellos que son reconocidos por autómatas de estados infinitos, son denotados por expresiones regulares y generados por gramáticas regulares. Estos lenguajes contienen a todos los lenguajes infinitos generados a partir de cualquier alfabeto. Los lenguajes infinitos tipificados como regulares poseen ciertas propiedades que los caracterizan y distinguen de otros lenguajes más complejos.
+Los lenguajes regulares, de tipo 3 según la jerarquía de Chomsky, son aquellos que son reconocidos por autómatas de estados infinitos, son denotados por expresiones regulares y generados por gramáticas regulares. Estos lenguajes contienen a todos los lenguajes infinitos generados a partir de cualquier alfabeto. Los lenguajes infinitos tipificados como regulares poseen ciertas propiedades que los caracterizan y distinguen de otros lenguajes más complejos.
 
 #####DFA
 ```
 Un DFA es una quíntupla A = (Q , Σ, δ, q0, F), siendo:
-Q = conjunto finito de estados.
-Σ = conjunto finito de símbolos del alfabeto.
-q0 = es el estado inicial (denotado con flecha → a inicio)
-F = conjunto de estados finales (o estados de aceptación), F ⊆ Q
+Q = conjunto finito de estados.
+Σ = conjunto finito de símbolos del alfabeto.
+q0 = es el estado inicial (denotado con flecha → a inicio)
+F = conjunto de estados finales (o estados de aceptación), F ⊆ Q
 δ = La función de transición entre estados, δ: Q x Σ → Q.
 ```
 
@@ -30,12 +30,12 @@ Las gramáticas libres de contexto son útiles para describir expresiones aritm�
 ```
 
 Un PDA es una seis-tupla A = (Q , Σ, Γ, δ, q0, F), siendo:
-Q = conjunto finito de estados.
-Σ = conjunto finito de símbolos del álfabeto.
-Γ = conjunto finito del alfabeto de la pila.
+Q = conjunto finito de estados.
+Σ = conjunto finito de símbolos del álfabeto.
+Γ = conjunto finito del alfabeto de la pila.
 δ = La función de transición entre estados, δ: Q x Σ x Γ  → P(QxΓ).
-q0 = es el estado inicial (denotado con echa → a inicio)
-F = conjunto de estados nales (o estados de aceptación), F ⊆ Q
+q0 = es el estado inicial (denotado con flecha → a inicio)
+F = conjunto de estados finales (o estados de aceptación), F ⊆ Q
 ```
 
 ###Máquina de Turing
@@ -47,13 +47,13 @@ Originalmente fue definida por el matemático inglés Alan Turing como una «má
 #####TM
 ```
 Un DFA es una siete-tupla A = (Q , Σ, Γ, δ, q0, qa, qr), siendo:
-Q = Conjunto finito de estados.
-Σ = Conjunto finito del alfabeto de entrada. No contiene el símbolo blanco ' '.
-Γ = Conjunto finito del alfabeto de la cinta donde ' ' ∈ Γ y Σ ⊂ Γ.
+Q = Conjunto finito de estados.
+Σ = Conjunto finito del alfabeto de entrada. No contiene el símbolo blanco ' '.
+Γ = Conjunto finito del alfabeto de la cinta donde ' ' ∈ Γ y Σ ⊂ Γ.
 δ = La función de transición entre estados, δ: Q x Γ  → Q x Γ x {L,R}.
-q0 = Es el estado inicial (denotado con flecha → a inicio)
-qa = Estado final de aceptación, qa ∈ Q
-qr = Estado final de rechazo, qr ∈ Q
+q0 = Es el estado inicial (denotado con flecha → a inicio)
+qa = Estado final de aceptación, qa ∈ Q
+qr = Estado final de rechazo, qr ∈ Q
 ```
 
 
