@@ -102,8 +102,11 @@ module PdaHelper
 						transition(head, symbol).each { |t| newHeads << t 
 							
 						}
-						movements.push({state: head, via: symbol})
+						
 					end
+				end
+				newHeads.each do |pejui|
+					movements.push({state: pejui, via: symbol})
 				end
 				heads = newHeads
 				
