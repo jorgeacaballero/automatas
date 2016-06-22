@@ -21,7 +21,7 @@
         <%= hidden_field_tag 'start', @tm.start %>
         <%= hidden_field_tag 'accept', @tm.accept %>
         <%= hidden_field_tag 'reject', @tm.reject %>
-
+        <%= hidden_field_tag 'transitions', @tm.transitions.to_json %>
         <div class="input-field col s12">
             <%= submit_tag("Consume") %>
         </div>

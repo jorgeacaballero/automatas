@@ -235,7 +235,6 @@
         $("#current_state_6").val("q3");
         $("#current_state_7").focus();
         $("#current_state_7").val("q3");
-        $("#current_state_8").focus();
 
         $("#symbol_0").focus();
         $("#symbol_0").val("0");
@@ -253,7 +252,6 @@
         $("#symbol_6").val("0");
         $("#symbol_7").focus();
         $("#symbol_7").val("1");
-        $("#symbol_8").focus();
 
         $("#destination_0").focus();
         $("#destination_0").val("q1");
@@ -275,6 +273,46 @@
     }
 
     function ejemplo3(){
+        $("#states").focus();
+        $("#states").val("q0,q1");
+        $("#alphabet").focus();
+        $("#alphabet").val("0,1");
+        $("#initial").focus();
+        $("#initial").val("q0");
+        $("#accept").focus();
+        $("#accept").val("q1");
+
+        for(var i = 0; i < 4; i++){
+            addRow();
+        }
+
+        $("#current_state_0").focus();
+        $("#current_state_0").val("q0");
+        $("#current_state_1").focus();
+        $("#current_state_1").val("q0");
+
+        $("#current_state_2").focus();
+        $("#current_state_2").val("q1");
+        $("#current_state_3").focus();
+        $("#current_state_3").val("q1");
+
+        $("#symbol_0").focus();
+        $("#symbol_0").val("0");
+        $("#symbol_1").focus();
+        $("#symbol_1").val("1");
+        $("#symbol_2").focus();
+        $("#symbol_2").val("0");
+        $("#symbol_3").focus();
+        $("#symbol_3").val("1");
+
+        $("#destination_0").focus();
+        $("#destination_0").val("q0");
+        $("#destination_1").focus();
+        $("#destination_1").val("q1");
+        $("#destination_2").focus();
+        $("#destination_2").val("q1");
+        $("#destination_3").focus();
+        $("#destination_3").val("q0");
 
     }
 </script>

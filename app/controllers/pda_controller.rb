@@ -46,7 +46,8 @@ class PdaController < ApplicationController
                     end
                 end
               end
-            end          
+            end
+          end          
         end
         @pda.transitions = trans_map
         #@pda.transitions = {"S" => {
