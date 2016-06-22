@@ -37,7 +37,7 @@
                             <h5>Transitions</h5>
                         </div>
                         <div class="col s12 m4 pull-m2">
-                            <a onclick="addPDARow()" class="btn deep-purple darken-1">Add Transition</a>
+                            <a onclick="addRow()" class="btn deep-purple darken-1">Add Transition</a>
                         </div>
                     </div> 
                     <div id="PDAtransitions">
@@ -60,3 +60,82 @@
 <div style="display: none;" id="new_pda_transition_row">
     <%= render partial: "transitions" %>
 </div>
+
+<script>
+
+    var transition_row = "";
+    var current_stateID = "current_state_";
+    var symbolID = "symbol_";
+    var destinationID = "destination_";
+    var pushID = "push_";
+    var popID = "pop_";
+
+    var id = 0;
+    var length = 0;
+
+    var array_inside = [];
+    var array_outside = [];
+
+    function addRow(){
+        current_stateID += id;
+        symbolID += id;
+        destinationID += id;
+        pushID += id;
+        popID += id;
+        transition_row = "<div class=\"row\">";
+        transition_row += "<div class=\"input-field col s3\">";
+        transition_row += "<label for=\"current_state\">Current State</label>";
+        transition_row += "<input id="+current_stateID+" name=\"current_state\" type=\"text\" class=\"validate current_state\"></style></div>";
+        transition_row += "<div class=\"input-field col s3\">";
+        transition_row += "<label for=\"symbol\">Symbol</label>";
+        transition_row += "<input id="+symbolID+" name=\"symbol\" type=\"text\" class=\"validate symbol\"></div>";
+        transition_row += "<div class=\"input-field col s4\">";
+        transition_row += "<label for=\"destination\">Destination</label>";
+        transition_row += "<input id="+destinationID+" type=\"text\" class=\"validate destination\"></div>";
+        transition_row += "<div class=\"input-field col s4\">";
+        transition_row += "<label for=\"destination\">Destination</label>";
+        transition_row += "<input id="+pushID+" type=\"text\" class=\"validate destination\"></div>";
+        transition_row += "<div class=\"input-field col s4\">";
+        transition_row += "<label for=\"destination\">Destination</label>";
+        transition_row += "<input id="+popID+" type=\"text\" class=\"validate destination\"></div>";
+        transition_row += "<div class=\"input-field col s2\">";
+        transition_row += "<a href=\"#\" class=\"remove-row\" onclick='removeRow($(this))'>";
+        transition_row += "<i class=\"material-icons deep-purple-text text-darken-1\">delete</i></a></div></div>";
+        $("#transitionRow").append(transition_row);
+        id += 1;
+        current_stateID = "current_state_";
+        symbolID = "symbol_";
+        destinationID = "destination_";
+        pushID = "push_";
+        popID = "pop_";
+    }
+
+    var fields = $('input[class=current_state]');
+    var fields2 = $('input[class=symbol]');
+    var fields3 = $('input[class=destination]');
+
+    for(var i=0; i < id; i++){
+        $("#current_state_"+id).keyup(console.log("hello"));
+        $("#symbol_"+id).keyup(console.log("hello"));
+        $("#destination_"+id).keyup(console.log("hello"));
+    }
+
+    function getData(){
+        for(var i=0; i < id; i++){
+            array_inside.push($("#current_state_"+i).val());
+            array_inside.push($("#symbol_"+i).val());
+            array_inside.push($("#destination_"+i).val());
+            array_outside.push("{"+array_inside+"}");
+            array_inside = []; 
+        }
+        console.log(array_outside);
+        $('form').submit();
+        array_outside = [];
+
+    }
+
+    function removeRow(element){
+        element.parent().parent().remove();
+    }
+
+</script>
