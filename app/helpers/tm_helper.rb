@@ -22,7 +22,7 @@ module TmHelper
 			movements.push({state: stateHead, via: "-"})
 			input.each_char do |symbol|
 				toState = transition(stateHead, symbol)
-				movements.push({state: stateHead, via: symbol})
+				movements.push({state: toState, via: symbol})
 				if @accept || @reject
 					break
 				else
