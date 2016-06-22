@@ -90,7 +90,12 @@
       style: cytoscape.stylesheet()
         .selector('node')
           .css({
-            'content': 'data(id)'
+            'content': 'data(id)',
+            'text-valign': 'center',
+            'color': 'white',
+            'text-outline-width': 2,
+            'backgrund-color': '#999',
+            'text-outline-color': '#999'
           })
         .selector('edge')
           .css({
