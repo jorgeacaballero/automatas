@@ -44,7 +44,7 @@ class DfaController < ApplicationController
       i = 1
       @dfa.transitions.each do |keyt, valt|
         valt.each do |key, val|
-          n = { data: { id: i.to_s, source: keyt, target: val, label: key } }
+          n = { data: { id: "#{keyt}#{val}", source: keyt, target: val, label: key } }
           edges.push(n)
           i = i+1
         end

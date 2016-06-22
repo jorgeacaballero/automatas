@@ -1,4 +1,9 @@
 <%= @compute %>
+<script type="text/javascript">
+    Materialize.toast(<%= @compute[:accept] %>, 4000)
+</script>
+>>>>>>> 9c925ed957f82d4a11201a8ae9a65ac46c708320
+<div class="cy" id="cy"></div>
 <table class='striped'>
     <thead>
         <tr>
@@ -73,3 +78,134 @@
         </div>
     <% end %>
 </div>
+
+<script type="text/javascript">
+    var cy = cytoscape({
+      container: document.getElementById('cy'),
+
+      zoomingEnabled: true,
+      userZoomingEnabled: false,
+      panningEnabled: true,
+      userPanningEnabled: true,
+
+      boxSelectionEnabled: false,
+      autounselectify: true,
+
+      style: cytoscape.stylesheet()
+        .selector('node')
+          .css({
+            'content': 'data(id)',
+            'text-valign': 'center',
+            'color': 'white',
+            'text-outline-width': 2,
+            'backgrund-color': '#999',
+            'text-outline-color': '#999'
+          })
+        .selector('edge')
+          .css({
+            'target-arrow-shape': 'triangle',
+            'width': 4,
+            'line-color': '#ddd',
+            'label': 'data(label)',
+            'target-arrow-color': '#ddd',
+            'curve-style': 'bezier'
+          })
+        .selector('.highlighted')
+          .css({
+            'background-color': '#5e35b1',
+            'line-color': '#5e35b1',
+            'target-arrow-color': '#5e35b1',
+            'transition-property': 'background-color, line-color, target-arrow-color',
+            'transition-duration': '0.5s'
+          }),
+
+      elements: <%= @bringElements %>,
+
+      layout: {
+        name: 'breadthfirst',
+        directed: true,
+        roots: '#a',
+        padding: 10
+      }
+    });
+
+    var elems = cy.elements();
+    
+    var movements = <%= @compute[:movements].to_json.html_safe %>;
+
+    for (var i = movements.length - 1; i >= 0; i--) {
+        console.log(movements[i], i);
+    }
+    for (var i = 0; i < elems.length; i++) {
+        console.log(elems[i]._private.data, i);
+    }
+
+    var getEdgeId = function(source, dest, via){
+        var ids = []
+        for (var i = 0; i < elems.length; i++) {
+            if (elems[i].isEdge()) {
+                if (elems[i]._private.data.target == dest && elems[i]._private.data.loqueron == via && elems[i]._private.data.source == source) {
+                    console.log("AJA", i)
+                    return i
+                }
+            }
+        }
+    };
+
+    var getStateId = function(state){
+        for (var i = 0; i < elems.length; i++) {
+            if (elems[i].isNode()) {
+                if (elems[i]._private.data.id == state) {
+                    return i;
+                }
+            }
+        }
+    };
+
+    var actualEdgeId = 0;
+    var actualStateId = 0;
+    var i = 0;
+
+    var highlightNextEle = function(){
+        if( i < movements.length ){
+            console.log("Hello", i);
+            //First time
+            if (i === 0) {
+                console.log(movements[i]);
+                console.log(actualStateId, actualEdgeId);
+                actualStateId = getStateId(movements[i].state);
+                elems[actualStateId].addClass('highlighted');
+            }
+
+            //Second time times
+            if (i == 1) {
+                console.log(movements[i]);
+                console.log(actualStateId, actualEdgeId);
+                elems[actualStateId].removeClass('highlighted');
+                actualStateId = getStateId(movements[i].state);
+                actualEdgeId = getEdgeId(movements[i-1].state, movements[i].state, movements[i].via);
+                elems[actualStateId].addClass('highlighted');
+                elems[actualEdgeId].addClass('highlighted');
+            }
+
+            //Next ones
+            if (i > 1) {
+                console.log(movements[i]);
+                console.log(actualStateId, actualEdgeId);
+                elems[actualStateId].removeClass('highlighted');
+                elems[actualEdgeId].removeClass('highlighted');
+                actualStateId = getStateId(movements[i].state);
+                actualEdgeId = getEdgeId(movements[i-1].state, movements[i].state, movements[i].via);
+                elems[actualStateId].addClass('highlighted');
+                elems[actualEdgeId].addClass('highlighted');
+            }
+
+            i++;
+            setTimeout(highlightNextEle, 1000);
+        }
+    };
+    // kick off first highlight
+    highlightNextEle();
+
+</script>
+

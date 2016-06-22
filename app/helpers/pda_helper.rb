@@ -83,18 +83,33 @@ module PdaHelper
 			heads, @stack, accept = [@start], [], false
 
 			eTrans = transition(@start, '&') if has_transition?(@start, '&')
+
 			heads += eTrans
-			movements.push(heads)
+			count = 0
+			heads.each do |vary|
+				if count==0
+					movements.push({state: vary, via: "-"})
+				else
+					movements.push({state: vary, via: "&"})
+				end
+				count = count+1
+			end
 
 			input.each_char do |symbol|
 				newHeads = []
 				heads.each do |head|
 					if has_transition?(head, symbol)
-						transition(head, symbol).each { |t| newHeads << t }
+						transition(head, symbol).each { |t| newHeads << t 
+							
+						}
+						
 					end
 				end
+				newHeads.each do |pejui|
+					movements.push({state: pejui, via: symbol})
+				end
 				heads = newHeads
-				movements.push(heads)
+				
 				break if heads.empty?
 			end
 			accept = includes_accept_state? heads

@@ -97,6 +97,35 @@ class PdaController < ApplicationController
                             "&"=>{"to"=>"ha", "pop"=>"@"}}
                         }
         @compute = @pda.consume(hash['input_string'])
+
+        nodes = []
+        edges = []
+
+        @pda.states.each do |s|
+            n = { data: { id: s }}
+            nodes.push(n)
+        end
+
+        i = 1
+        @pda.transitions.each do |keyt, valt|
+          valt.each do |key, val|
+            e = { data: {
+              id: i.to_s,
+              loqueron: key,
+              source: keyt,
+              target: val['to'],
+              label: "#{key}, #{val['pop'] ? val['pop'] : '&'} -> #{val['push'] ? val['push'] : '&'}"}
+            }
+            edges.push(e)
+            i = i+1
+          end
+        end
+
+        @bringElements = {
+          nodes: nodes,
+          edges: edges
+        }.to_json.html_safe
+
     end
 
     private

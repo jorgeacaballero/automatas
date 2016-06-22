@@ -19,10 +19,10 @@ module DfaHelper
 
 		def consume(input)
 			head = @start.to_s
-            movements = [@start.to_s]
+            movements = [{state: @start.to_s, via: "-"}]
 			input.each_char { 
                 |symbol| head = @transitions[head][symbol]
-                movements.push(head)
+                movements.push({state: head, via: symbol})
             }
 			accept = is_accept_state? head
 			resp = {
