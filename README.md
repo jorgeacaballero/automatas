@@ -34,7 +34,11 @@ Q = conjunto finito de estados.
 Σ = conjunto finito de símbolos del álfabeto.
 Γ = conjunto finito del alfabeto de la pila.
 δ = La función de transición entre estados, δ: Q x Σ x Γ  → P(QxΓ).
+<<<<<<< HEAD
+q0 = es el estado inicial (denotado con la flecha → a inicio)
+=======
 q0 = es el estado inicial (denotado con flecha → a inicio)
+>>>>>>> 067bc4e370ade57e6b93ece39d3c91edb5d850be
 F = conjunto de estados finales (o estados de aceptación), F ⊆ Q
 ```
 
@@ -132,42 +136,10 @@ Cytoscape es una plataforma de software de bioinformática de código abierto pa
 ![Imgur](http://i.imgur.com/B4lOHtM.png "Compute TM")
 ![Imgur](http://i.imgur.com/1C79drB.gif "Consume TM")
 
-##Funciones Internas
+##Repositorio
 
-### NFA
+El codigo fuente del proyecto puede ser encontrado en este repositorio en [Github](https://github.com/jorgeacaballero/automatas)
 
-La siguiente NFA acepta el lenguaje `a* + (ab)*`
-
-1. Inicializar la NFA
-
-    `nfa = NfaHelper::NFA.new()`
-
-2. Definir los parametros de cada tupla:
-
-    ```
-    nfa.states = ['A', 'B', 'C', 'D']
-    nfa.alphabet = ['a', 'b']
-    nfa.start = 'A'
-    nfa.accept = ['A', 'B', 'D']
-    nfa.transitions = {"A"=>{"a"=>["B", "C"]}, "B"=>{"a"=>"B"}, "C"=>{"b"=>"D"}, "D"=>{"a"=>"C"}}
-    ```
-
-3. Para probar la maquina, usamos la funcion booleana `accepts?` de la siguiente manera:
-
-    ```
-    nfa.accepts? 'a'
-     => true
-    nfa.accepts? 'ab'
-     => true
-    nfa.accepts? 'aba'
-     => false
-    nfa.accepts? 'abaababababa'
-     => false
-    nfa.accepts? 'ababab'
-     => true
-    nfa.accepts? 'abababababab'
-     => true
-    ```
 
 ##Trabajo futuro
 
