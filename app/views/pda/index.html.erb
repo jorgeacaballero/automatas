@@ -126,8 +126,9 @@
             array_outside.push(res);
 
         }
-        $('form').submit();
         $("[name='transitions']").val(JSON.stringify(array_outside));
+        $('form').submit();
+        
         array_outside = [];
     }
 

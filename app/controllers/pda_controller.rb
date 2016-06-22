@@ -25,18 +25,18 @@ class PdaController < ApplicationController
         @pda.transitions.each do |t|
           if trans_map[t['current_state']] == nil
             trans_map[t['current_state']] = {t['symbol'] => {"to"=>t['destination']}}
-            if t['push'] != '-'
+            if t['push'] != '-' && t['push'] != nil
               trans_map[t['current_state']] = {t['symbol'] => {"push"=>t['push']}}
             end
-            if t['pop'] != '-'
+            if t['pop'] != '-' && t['pop'] != nil
               trans_map[t['current_state']] = {t['symbol'] => {"pop"=>t['pop']}}
             end
           else
             trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"to"=>t['destination']}})
-            if t['push'] != '-'
+            if t['push'] != '-' && t['push'] != nil
               trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"push"=>t['push']}})
             end
-            if t['pop'] != '-'
+            if t['pop'] != '-' && t['pop'] != nil
               trans_map[t['current_state']] = trans_map[t['current_state']].merge({t['symbol'] => {"pop"=>t['pop']}})
             end
           end
