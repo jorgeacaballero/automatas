@@ -111,6 +111,7 @@ class PdaController < ApplicationController
           valt.each do |key, val|
             e = { data: {
               id: i.to_s,
+              loqueron: key,
               source: keyt,
               target: val['to'],
               label: "#{key}, #{val['pop'] ? val['pop'] : '&'} -> #{val['push'] ? val['push'] : '&'}"}
@@ -124,7 +125,7 @@ class PdaController < ApplicationController
           nodes: nodes,
           edges: edges
         }.to_json.html_safe
-        
+
     end
 
     private

@@ -135,7 +135,7 @@
         var ids = []
         for (var i = 0; i < elems.length; i++) {
             if (elems[i].isEdge()) {
-                if (elems[i]._private.data.target == dest && elems[i]._private.data.label == via && elems[i]._private.data.source == source) {
+                if (elems[i]._private.data.target == dest && elems[i]._private.data.loqueron == via && elems[i]._private.data.source == source) {
                     console.log("AJA", i)
                     return i
                 }
