@@ -44,6 +44,10 @@
                         <div id="PDAtransitionRow">
                         </div>
                     </div>
+
+                    <button onclick="getData()">Probar</button>
+                    <%= hidden_field_tag 'transitions', [] %>
+
                     <div class="row">
                         <div class="center">
                             <div class="input-field col s12">
@@ -110,16 +114,6 @@
         popID = "pop_";
     }
 
-    var fields = $('input[class=current_state]');
-    var fields2 = $('input[class=symbol]');
-    var fields3 = $('input[class=destination]');
-
-    for(var i=0; i < id; i++){
-        $("#current_state_"+id).keyup(console.log("hello"));
-        $("#symbol_"+id).keyup(console.log("hello"));
-        $("#destination_"+id).keyup(console.log("hello"));
-    }
-
     function getData(){
         for(var i=0; i < id; i++){
             array_inside.push($("#current_state_"+i).val());
@@ -131,7 +125,6 @@
         console.log(array_outside);
         $('form').submit();
         array_outside = [];
-
     }
 
     function removeRow(element){

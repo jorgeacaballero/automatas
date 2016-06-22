@@ -98,16 +98,6 @@
         destinationID = "destination_";
     }
 
-    var fields = $('input[class=current_state]');
-    var fields2 = $('input[class=symbol]');
-    var fields3 = $('input[class=destination]');
-
-    for(var i=0; i < id; i++){
-        $("#current_state_"+id).keyup(console.log("hello"));
-        $("#symbol_"+id).keyup(console.log("hello"));
-        $("#destination_"+id).keyup(console.log("hello"));
-    }
-
     function getData(){
         for(var i=0; i < id; i++){
             array_inside.push($("#current_state_"+i).val());
@@ -125,8 +115,5 @@
     function removeRow(element){
         element.parent().parent().remove();
     }
-
-
-
 
 </script>
