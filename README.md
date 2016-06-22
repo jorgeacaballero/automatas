@@ -26,7 +26,7 @@ Las gramáticas libres de contexto amplían la capacidad para especificar lengua
  
 Las gramáticas libres de contexto son útiles para describir expresiones aritméticas que tengan una anidación arbitraria de paréntesis balanceados y estructuras de bloque en los lenguajes de programación.
 
-#####PDA TODO
+#####PDA
 ```
 Un PDA es una seis-tupla A = (Q , Σ, Γ, δ, q0, F), siendo:
 Q = conjunto nito de estados.
