@@ -34,11 +34,7 @@ Q = conjunto finito de estados.
 Σ = conjunto finito de símbolos del álfabeto.
 Γ = conjunto finito del alfabeto de la pila.
 δ = La función de transición entre estados, δ: Q x Σ x Γ  → P(QxΓ).
-<<<<<<< HEAD
 q0 = es el estado inicial (denotado con la flecha → a inicio)
-=======
-q0 = es el estado inicial (denotado con flecha → a inicio)
->>>>>>> 067bc4e370ade57e6b93ece39d3c91edb5d850be
 F = conjunto de estados finales (o estados de aceptación), F ⊆ Q
 ```
 
