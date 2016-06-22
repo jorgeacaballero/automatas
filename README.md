@@ -1,33 +1,34 @@
-#Automatas
+#Autómatas
 
 ##Introducción
 
-El siguiente proyecto consiste en el desarrollo de una aplicación web que permita ingresar, validar y ejecutrar automatas. Los automatas a desarrollar son: DFA, PDA y TM.
+El siguiente proyecto consiste en el desarrollo de una aplicación web que permita ingresar, validar y ejecutrar autómatas. Los autómatas a desarrollar son: DFA, PDA y TM.
 
-Para este proyecto se ha elegido usar un backend de [Ruby](https://www.ruby-lang.org/en/) con el framework [Ruby on Rails](http://rubyonrails.org/). En frontend se utilizo el css framework [Materialize](http://materializecss.com/) y el graph framework de [Cytoscape](http://js.cytoscape.org/).
+Para este proyecto se ha elegido usar un backend de [Ruby](https://www.ruby-lang.org/en/) con el framework [Ruby on Rails](http://rubyonrails.org/). En frontend se utilizó el CSS framework [Materialize](http://materializecss.com/) y el graph framework de [Cytoscape](http://js.cytoscape.org/).
 
 ##Marco Teórico
 
 ###Lenguajes Regulares
-Los lenguajes regulares, de tipo 3 según la jerarquía de Chomsky, son aquellos que son reconocidos por autómatas de estados infinitos, son denotados por expresiones regulares y generados por gramáticas regulares. Estos lenguajes contienen a todos los lenguajes infinitos generados a partir de cualquier alfabeto. Los lenguajes infinitos tipificados como regulares poseen ciertas propiedades que lo caracterizan y distinguen de otros lenguajes más complejos.
+Los lenguajes regulares, de tipo 3 según la jerarquía de Chomsky, son aquellos que son reconocidos por autómatas de estados infinitos, son denotados por expresiones regulares y generados por gramáticas regulares. Estos lenguajes contienen a todos los lenguajes infinitos generados a partir de cualquier alfabeto. Los lenguajes infinitos tipificados como regulares poseen ciertas propiedades que los caracterizan y distinguen de otros lenguajes más complejos.
 
 #####DFA
 ```
 Un DFA es una quíntupla A = (Q , Σ, δ, q0, F), siendo:
-Q = conjunto nito de estados.
-Σ = conjunto nito de símbolos del alfabeto.
-q0 = es el estado inicial (denotado con echa → a inicio)
-F = conjunto de estados nales (o estados de aceptación), F ⊆ Q
+Q = conjunto finito de estados.
+Σ = conjunto finito de símbolos del alfabeto.
+q0 = es el estado inicial (denotado con flecha → a inicio)
+F = conjunto de estados finales (o estados de aceptación), F ⊆ Q
 δ = La función de transición entre estados, δ: Q x Σ → Q.
 ```
 
-###Gramaticas Libres de Contexto
+###Gramáticas Libres de Contexto
 Las gramáticas libres de contexto amplían la capacidad para especificar lenguajes al incluir algunos lenguajes que no son reconocidos por un autómata finito.
  
 Las gramáticas libres de contexto son útiles para describir expresiones aritméticas que tengan una anidación arbitraria de paréntesis balanceados y estructuras de bloque en los lenguajes de programación.
 
-#####PDA TODO
+#####PDA
 ```
+
 Un PDA es una seis-tupla A = (Q , Σ, Γ, δ, q0, F), siendo:
 Q = conjunto nito de estados.
 Σ = conjunto nito de símbolos del álfabeto.
@@ -37,7 +38,7 @@ F = conjunto de estados nales (o estados de aceptación), F ⊆ Q
 δ = La función de transición entre estados, δ: Q x Σ x Γ  → P(QxΓ).
 ```
 
-###Maquina de Turing
+###Máquina de Turing
 Una máquina de Turing es un dispositivo que manipula símbolos sobre una tira de cinta de acuerdo a una tabla de reglas. A pesar de su simplicidad, una máquina de Turing puede ser adaptada para simular la lógica de cualquier algoritmo de computador y es particularmente útil en la explicación de las funciones de una CPU dentro de un computador.
 
 Originalmente fue definida por el matemático inglés Alan Turing como una «máquina automática» en 1936, en la revista Proceedings of the London Mathematical Society, La máquina de Turing no está diseñada como una tecnología de computación práctica, sino como un dispositivo hipotético que representa una máquina de computación. Las máquinas de Turing ayudan a los científicos a entender los límites del cálculo mecánico.
