@@ -1,66 +1,6 @@
 <div class="cy" id="cy"></div>
 
-<table class='striped'>
-    <thead>
-        <tr>
-            <th data-field="id">Símbolo</th>
-            <th data-field="name">Contenido</th>
-        </tr>
-    </thead>
 
-    <tbody>
-        <tr>
-            <td>Q</td>
-            <td><% @tm.states.each do |state| %><%= state%> <% end %></td>
-        </tr>
-        <tr>
-            <td>Σ</td>
-            <td> <% @tm.input_alphabet.each do |alphabet| %><%= alphabet%> <% end %> </td>
-        </tr>
-        <tr>
-            <td>Γ</td>
-            <td> <% @tm.tape_alphabet.each do |alphabet| %><%= alphabet%> <% end %> </td>
-        </tr>
-        <tr>
-            <td>δ</td>
-            <td> 
-                <table> <!--Comienza la tabla anidada de transiciones -->
-                    <thead>
-                        <tr>
-                            <th data-field="id">Estado</th>
-                            <th data-field="name">Movimientos</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <% @tm.transitions.each do |trans_key, trans_val| %>
-                        <tr>
-                            <td><%= trans_key %></td>
-                            <td>
-                                <% trans_val.each do |key, value|%>
-                                    <%= key %> -> <%= value %> <br>
-                                <% end %>
-                            </td>
-                        </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-            </td> <!--Aqui termina la row de transiciones -->
-        </tr>
-        <tr>
-            <td>Q<sub>0</sub></td>
-            <td> <%= @tm.start %> </td>
-        </tr>
-        <tr>
-            <td>Q<sub>a</sub></td>
-            <td> <% @tm.accept.each do |accept| %><%= accept%> <% end %>  </td>
-        </tr>
-        <tr>
-            <td>Q<sub>r</sub></td>
-            <td> <% @tm.reject.each do |reject| %><%= reject%> <% end %>  </td>
-        </tr>
-    </tbody>
-</table>
 
 <div class="row">
     <%= form_tag(controller: "tm", action: "consume", method: "post") do %>
@@ -69,8 +9,8 @@
             <%= text_field_tag(:input_string) %>
         </div>
         <%= hidden_field_tag 'states', @tm.states %>
-        <%= hidden_field_tag 'input_alphabet', @tm.input_alphabet %>
-        <%= hidden_field_tag 'tape_alphabet', @tm.tape_alphabet %>
+        <%= hidden_field_tag 'inputAlphabet', @tm.inputAlphabet %>
+        <%= hidden_field_tag 'tapeAlphabet', @tm.tapeAlphabet %>
         <%= hidden_field_tag 'start', @tm.start %>
         <%= hidden_field_tag 'accept', @tm.accept %>
         <%= hidden_field_tag 'reject', @tm.reject %>
