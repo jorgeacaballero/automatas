@@ -78,6 +78,7 @@ class TmController < ApplicationController
             e = { data: {
               id: i.to_s,
               source: keyt,
+              loqueron: key,
               move: val['move'],
               target: val['to'],
               label: "#{key} -> #{val['write'] ? val['write'] : '&'}, #{val['move']}"
