@@ -64,6 +64,6 @@ class TmController < ApplicationController
 
     private
         def tm_params
-          params.permit(:states, :alphabet, :start, :transitions, :input_string, :input_alphabet, :tape_alphabet)
+          params.permit(:states, :alphabet, :start, :transitions, :input_string, :inputAlphabet, :tapeAlphabet)
         end
 end
