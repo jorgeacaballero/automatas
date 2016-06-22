@@ -1,5 +1,5 @@
+<%= @compute %>
 <div class="cy" id="cy"></div>
-
 
 
 <div class="row">
@@ -55,27 +55,9 @@
             'transition-property': 'background-color, line-color, target-arrow-color',
             'transition-duration': '0.5s'
           }),
-      
-      elements: {
-          nodes: [
-            { data: { id: 'a' } },
-            { data: { id: 'b' } },
-            { data: { id: 'c' } },
-            { data: { id: 'd' } },
-            { data: { id: 'e' } }
-          ], 
-          
-          edges: [
-            { data: { id: 'a"e', weight: 1, source: 'a', target: 'e', label: '0' } },
-            { data: { id: 'ab', weight: 3, source: 'a', target: 'b' , label: '1' } },
-            { data: { id: 'be', weight: 4, source: 'b', target: 'e' , label: '0' } },
-            { data: { id: 'bc', weight: 5, source: 'b', target: 'c' , label: '0' } },
-            { data: { id: 'ce', weight: 6, source: 'c', target: 'e' , label: '1' } },
-            { data: { id: 'cd', weight: 2, source: 'c', target: 'd' , label: '0' } },
-            { data: { id: 'de', weight: 7, source: 'd', target: 'e' , label: '1' } }
-          ]
-        },
-      
+
+      elements: <%= @bringElements %>,
+
       layout: {
         name: 'breadthfirst',
         directed: true,
@@ -83,19 +65,82 @@
         padding: 10
       }
     });
-      
-    var bfs = cy.elements().bfs('#a', function(){}, true);
 
-    var i = 0;
-    var highlightNextEle = function(){
-      if( i < bfs.path.length ){
-        bfs.path[i].addClass('highlighted');
-      
-        i++;
-        setTimeout(highlightNextEle, 1000);
-      }
+    var elems = cy.elements();
+    
+    var movements = <%= @compute[:movements].to_json.html_safe %>;
+
+    for (var i = movements.length - 1; i >= 0; i--) {
+        console.log(movements[i], i);
+    }
+    for (var i = 0; i < elems.length; i++) {
+        console.log(elems[i]._private.data, i);
+    }
+
+    var getEdgeId = function(source, dest, via){
+        var ids = []
+        for (var i = 0; i < elems.length; i++) {
+            if (elems[i].isEdge()) {
+                if (elems[i]._private.data.target == dest && elems[i]._private.data.loqueron == via && elems[i]._private.data.source == source) {
+                    console.log("AJA", i)
+                    return i
+                }
+            }
+        }
     };
 
+    var getStateId = function(state){
+        for (var i = 0; i < elems.length; i++) {
+            if (elems[i].isNode()) {
+                if (elems[i]._private.data.id == state) {
+                    return i;
+                }
+            }
+        }
+    };
+
+    var actualEdgeId = 0;
+    var actualStateId = 0;
+    var i = 0;
+
+    var highlightNextEle = function(){
+        if( i < movements.length ){
+            console.log("Hello", i);
+            //First time
+            if (i === 0) {
+                console.log(movements[i]);
+                console.log(actualStateId, actualEdgeId);
+                actualStateId = getStateId(movements[i].state);
+                elems[actualStateId].addClass('highlighted');
+            }
+
+            //Second time times
+            if (i == 1) {
+                console.log(movements[i]);
+                console.log(actualStateId, actualEdgeId);
+                elems[actualStateId].removeClass('highlighted');
+                actualStateId = getStateId(movements[i].state);
+                actualEdgeId = getEdgeId(movements[i-1].state, movements[i].state, movements[i].via);
+                elems[actualStateId].addClass('highlighted');
+                elems[actualEdgeId].addClass('highlighted');
+            }
+
+            //Next ones
+            if (i > 1) {
+                console.log(movements[i]);
+                console.log(actualStateId, actualEdgeId);
+                elems[actualStateId].removeClass('highlighted');
+                elems[actualEdgeId].removeClass('highlighted');
+                actualStateId = getStateId(movements[i].state);
+                actualEdgeId = getEdgeId(movements[i-1].state, movements[i].state, movements[i].via);
+                elems[actualStateId].addClass('highlighted');
+                elems[actualEdgeId].addClass('highlighted');
+            }
+
+            i++;
+            setTimeout(highlightNextEle, 1000);
+        }
+    };
     // kick off first highlight
     highlightNextEle();
 

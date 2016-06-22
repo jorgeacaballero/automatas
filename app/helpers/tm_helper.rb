@@ -17,10 +17,12 @@ module TmHelper
 			@tape = TMTape.new(input)
 			@accept = false
 			@reject = false
-
+			movements = []
 			stateHead = @start.to_s
+			movements.push({state: stateHead, via: "-"})
 			input.each_char do |symbol|
 				toState = transition(stateHead, symbol)
+				movements.push({state: toState, via: symbol})
 				if @accept || @reject
 					break
 				else
@@ -30,6 +32,7 @@ module TmHelper
 		      
 			resp = {
 				input: input,
+				movements: movements,
 				accept: @accept,
 				reject: @reject,
 				head: stateHead,
