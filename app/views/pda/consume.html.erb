@@ -1,4 +1,7 @@
 <%= @compute %>
+<script type="text/javascript">
+    Materialize.toast(<%= @compute[:accept] %>, 4000)
+</script>
 <div class="cy" id="cy"></div>
 <table class='striped'>
     <thead>
