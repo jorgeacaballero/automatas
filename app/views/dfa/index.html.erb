@@ -43,6 +43,8 @@
                         </div>
                     </div>
 
+                    <%= hidden_field_tag 'transitions', [] %>
+
                     <div class="row">
                         <div class="center">
                             <div class="input-field col s12">
@@ -99,8 +101,13 @@
 
     function getData(){
         for(var i=0; i < id; i++){
-            alert($("#current_state_"+i).val()); 
+            array_inside.push($("#current_state_"+i).val());
+            array_inside.push($("#symbol_"+i).val());
+            array_inside.push($("#destination_"+i).val());
+            array_outside.push("{"+array_inside+"}");
+            array_inside = []; 
         }
+        alert(array_outside);
     }
 
     function removeRow(element){
