@@ -28,12 +28,13 @@ Las gramáticas libres de contexto son útiles para describir expresiones aritm�
 
 #####PDA TODO
 ```
-Un DFA es una quíntupla A = (Q , Σ, δ, q0, F), siendo:
+Un PDA es una seis-tupla A = (Q , Σ, Γ, δ, q0, F), siendo:
 Q = conjunto nito de estados.
-Σ = conjunto nito de símbolos del alfabeto.
+Σ = conjunto nito de símbolos del álfabeto.
+Γ = conjunto nito es el álfabeto de la pila.
 q0 = es el estado inicial (denotado con echa → a inicio)
 F = conjunto de estados nales (o estados de aceptación), F ⊆ Q
-δ = La función de transición entre estados, δ: Q x Σ → Q.
+δ = La función de transición entre estados, δ: Q x Σ x Γ  → P(QxΓ).
 ```
 
 ###Maquina de Turing
