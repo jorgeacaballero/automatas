@@ -1,3 +1,11 @@
+<script type="text/javascript">
+    Materialize.toast('<%= if @compute[:accept]==true 
+                                'Cadena Aceptada' 
+                            else 
+                                'Cadena Rechazada' 
+                            end %>', 4000)
+</script>
+
 <div class="cy" id="cy"></div>
 
 <table class='striped'>
