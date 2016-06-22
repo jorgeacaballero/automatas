@@ -118,11 +118,19 @@ Cytoscape es una plataforma de software de bioinformática de código abierto pa
 ##Modo de Uso
 
 ####DFA
-
+![Imgur](http://i.imgur.com/02cKFoF.png "Create DFA")
+![Imgur](http://i.imgur.com/CM6BTz0.png "Compute DFA")
+![Imgur](http://i.imgur.com/kP9xq9h.gif "Consume DFA")
 
 ####PDA
+![Imgur](http://i.imgur.com/xKncqrE.png "Create PDA")
+![Imgur](http://i.imgur.com/EHkx26B.png "Compute PDA")
+![Imgur](http://i.imgur.com/K6f3E3D.gif "Consume PDA")
 
 ####TM
+![Imgur](http://i.imgur.com/uv0tWSn.png "Create TM")
+![Imgur](http://i.imgur.com/B4lOHtM.png "Compute TM")
+![Imgur](http://i.imgur.com/1C79drB.gif "Consume TM")
 
 ##Funciones Internas
 
