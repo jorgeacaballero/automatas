@@ -42,12 +42,13 @@
                         </div>
                     </div>
                     <button onclick="getData()">Probar</button>
+
                     <%= hidden_field_tag 'transitions', [] %>
 
                     <div class="row">
                         <div class="center">
                             <div class="input-field col s12">
-                                <%= submit_tag("Compute",:class => "btn deep-purple darken-1") %>
+                                <button class="btn deep-purple darken-1"onclick="getData()">Compute</button>
                             </div>
                         </div>
                     </div>

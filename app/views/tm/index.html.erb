@@ -33,7 +33,7 @@
                             <h5>Transitions</h5>
                         </div>
                         <div class="col s12 m4 pull-m2">
-                            <a onclick="addTMRow()" class="btn deep-purple darken-1">Add Transition</a>
+                            <a onclick="addRow()" class="btn deep-purple darken-1">Add Transition</a>
                         </div>
                     </div>
                     <div id="TMtransitions">
@@ -41,10 +41,12 @@
                         </div>
                     </div>
 
+                    <%= hidden_field_tag 'transitions', [] %>
+
                     <div class="row">
                         <div class="center">
                             <div class="input-field col s12">
-                                <%= submit_tag("Compute",:class => "btn deep-purple darken-1") %>
+                                <button class="btn deep-purple darken-1"onclick="getData()">Compute</button>
                             </div>
                         </div>
                     </div>
@@ -112,8 +114,8 @@
             array_inside.push($("#current_state_"+i).val());
             array_inside.push($("#symbol_"+i).val());
             array_inside.push($("#destination_"+i).val());
-            array_inside.push($("#push_"+i).val());
-            array_inside.push($("#pop_"+i).val());
+            array_inside.push($("#write_"+i).val());
+            array_inside.push($("#move_"+i).val());
             array_outside.push("{"+array_inside+"}");
             array_inside = []; 
         }
