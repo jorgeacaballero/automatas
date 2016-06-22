@@ -14,24 +14,33 @@ class DfaController < ApplicationController
         @dfa.alphabet = hash['alphabet'].split(/\s*,\s*/)
         @dfa.start = hash['start']
         @dfa.accept = hash['accept'].split(/\s*,\s*/)
-        @dfa.transitions = {
-          "q1" => {
-            "0" => "q2",
-            "1" => "q1"
-          },
-          "q2" => {
-            "0" => "q3",
-            "1" => "q1"
-          },
-          "q3" => {
-            "0" => "q3",
-            "1" => "q4"
-          },
-          "q4" => {
-            "0" => "q4",
-            "1" => "q4"
-          }
-      }
+        @dfa.transitions = JSON.parse(hash['transitions'])
+        trans_map = {}
+        @dfa.transitions.each do |t|
+          trans_map = trans_map.merge!(t['current_state'] => {
+            t['symbol'] => t['destination']
+          })
+        end
+        @dfa.transitions = trans_map
+
+      #   {
+      #     "q1" => {
+      #       "0" => "q2",
+      #       "1" => "q1"
+      #     },
+      #     "q2" => {
+      #       "0" => "q3",
+      #       "1" => "q1"
+      #     },
+      #     "q3" => {
+      #       "0" => "q3",
+      #       "1" => "q4"
+      #     },
+      #     "q4" => {
+      #       "0" => "q4",
+      #       "1" => "q4"
+      #     }
+      # }
 
       nodes = []
       edges = []
@@ -65,8 +74,8 @@ class DfaController < ApplicationController
         @dfa.alphabet = hash['alphabet'].split(' ')
         @dfa.start = hash['start']
         @dfa.accept = hash['accept'].split(' ')
-        @dfa.transitions = {"q1"=>{"0"=>"q2", "1"=>"q1"}, "q2"=>{"0"=>"q3", "1"=>"q1"}, "q3"=>{"0"=>"q3", "1"=>"q4"}, "q4"=>{"0"=>"q4", "1"=>"q4"}}
-
+        puts(@dfa.transitions)
+        @dfa.transitions = JSON.parse(@dfa.transitions)
         @compute = @dfa.consume(hash['input_string'])
 
         nodes = []

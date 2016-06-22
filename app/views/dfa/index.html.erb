@@ -42,12 +42,13 @@
                         </div>
                     </div>
                     <button onclick="getData()">Probar</button>
+
                     <%= hidden_field_tag 'transitions', [] %>
 
                     <div class="row">
                         <div class="center">
                             <div class="input-field col s12">
-                                <%= submit_tag("Compute",:class => "btn deep-purple darken-1") %>
+                                <button class="btn deep-purple darken-1"onclick="getData()">Compute</button>
                             </div>
                         </div>
                     </div>
@@ -98,25 +99,18 @@
         destinationID = "destination_";
     }
 
-    var fields = $('input[class=current_state]');
-    var fields2 = $('input[class=symbol]');
-    var fields3 = $('input[class=destination]');
-
-    for(var i=0; i < id; i++){
-        $("#current_state_"+id).keyup(console.log("hello"));
-        $("#symbol_"+id).keyup(console.log("hello"));
-        $("#destination_"+id).keyup(console.log("hello"));
-    }
-
     function getData(){
+        var array_outside = [];
         for(var i=0; i < id; i++){
-            array_inside.push($("#current_state_"+i).val());
-            array_inside.push($("#symbol_"+i).val());
-            array_inside.push($("#destination_"+i).val());
-            array_outside.push("{"+array_inside+"}");
-            array_inside = []; 
+            res = {
+                current_state: $("#current_state_"+i).val(),
+                symbol: $("#symbol_"+i).val(),
+                destination: $("#destination_"+i).val()
+            }
+            array_outside.push(res);
         }
         console.log(array_outside);
+        $("[name='transitions']").val(JSON.stringify(array_outside));
         $('form').submit();
         array_outside = [];
 
@@ -130,3 +124,4 @@
 
 
 </script>
+
