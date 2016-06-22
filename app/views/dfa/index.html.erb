@@ -10,21 +10,21 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <%= text_field_tag(:states, nil, :required => true)%>
+                            <%= text_field_tag(:states, nil, :required => true, :id => "states")%>
                             <label for="states">States</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m4">
-                            <%= text_field_tag(:alphabet) %>
+                            <%= text_field_tag(:alphabet, nil, :id => "alphabet") %>
                             <label for="alphabet">Alphabet</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <%= text_field_tag(:start) %>
+                            <%= text_field_tag(:start, nil, :id => "initial") %>
                             <label for="start">Initial State</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <%= text_field_tag(:accept) %>
+                            <%= text_field_tag(:accept,nil, :id => "accept") %>
                             <label for="accept">Accept States</label>
                         </div>
                     </div>
@@ -35,6 +35,15 @@
                         </div>
                         <div class="col s12 m4 pull-m2">
                             <a onclick="addRow()" class="btn deep-purple darken-1">Add Transition</a>
+                        </div>
+                        <div class="col s12 m1 pull-m3">
+                            <a onclick="ejemplo1()" class="btn deep-purple darken-1">Ejemplo 1</a>
+                        </div>
+                        <div class="col s12 m1 pull-m2">
+                            <a onclick="ejemplo2()" class="btn deep-purple darken-1">Ejemplo 2</a>
+                        </div>
+                        <div class="col s12 m1 pull-m1">
+                            <a onclick="ejemplo3()" class="btn deep-purple darken-1">Ejemplo 3</a>
                         </div>
                     </div> 
                     <div id="transitions">
@@ -117,6 +126,92 @@
 
     function removeRow(element){
         element.parent().parent().remove();
+    }
+
+    function ejemplo1(){
+        $("#states").focus();
+        $("#states").val("q0,q1,q2,q3,q4");
+        $("#alphabet").focus();
+        $("#alphabet").val("0,1");
+        $("#initial").focus();
+        $("#initial").val("q0");
+        $("#accept").focus();
+        $("#accept").val("q0");
+
+        for(var i = 0; i < 10; i++){
+            addRow();
+        }
+
+        $("#current_state_0").focus();
+        $("#current_state_0").val("q0");
+        $("#current_state_1").focus();
+        $("#current_state_1").val("q0");
+        $("#current_state_2").focus();
+        $("#current_state_2").val("q1");
+        $("#current_state_3").focus();
+        $("#current_state_3").val("q1");
+        $("#current_state_4").focus();
+        $("#current_state_4").val("q2");
+        $("#current_state_5").focus();
+        $("#current_state_5").val("q2");
+        $("#current_state_6").focus();
+        $("#current_state_6").val("q3");
+        $("#current_state_7").focus();
+        $("#current_state_7").val("q3");
+        $("#current_state_8").focus();
+        $("#current_state_8").val("q4");
+        $("#current_state_9").focus();
+        $("#current_state_9").val("q4");
+
+        $("#symbol_0").focus();
+        $("#symbol_0").val("0");
+        $("#symbol_1").focus();
+        $("#symbol_1").val("1");
+        $("#symbol_2").focus();
+        $("#symbol_2").val("0");
+        $("#symbol_3").focus();
+        $("#symbol_3").val("1");
+        $("#symbol_4").focus();
+        $("#symbol_4").val("0");
+        $("#symbol_5").focus();
+        $("#symbol_5").val("1");
+        $("#symbol_6").focus();
+        $("#symbol_6").val("0");
+        $("#symbol_7").focus();
+        $("#symbol_7").val("1");
+        $("#symbol_8").focus();
+        $("#symbol_8").val("0");
+        $("#symbol_9").focus();
+        $("#symbol_9").val("1");
+
+        $("#destination_0").focus();
+        $("#destination_0").val("q0");
+        $("#destination_1").focus();
+        $("#destination_1").val("q1");
+        $("#destination_2").focus();
+        $("#destination_2").val("q2");
+        $("#destination_3").focus();
+        $("#destination_3").val("q3");
+        $("#destination_4").focus();
+        $("#destination_4").val("q4");
+        $("#destination_5").focus();
+        $("#destination_5").val("q0");
+        $("#destination_6").focus();
+        $("#destination_6").val("q1");
+        $("#destination_7").focus();
+        $("#destination_7").val("q2");
+        $("#destination_8").focus();
+        $("#destination_8").val("q3");
+        $("#destination_9").focus();
+        $("#destination_9").val("q4");
+    }
+
+    function ejemplo2(){
+
+    }
+
+    function ejemplo3(){
+
     }
 </script>
 
